@@ -1,0 +1,45 @@
+{
+    "configen": {
+        "version": "4",
+        "sources": [
+            {
+                "id": "gin",
+                "path": "implements",
+                "r": true
+            },
+            {
+                "id": "devtools",
+                "path": "devtools",
+                "r": true
+            },
+            {
+                "id": "demo",
+                "path": "src/demo/demo1",
+                "r": true
+            }
+        ],
+        "destinations": [
+            {
+                "id": "gin",
+                "path": "gen/gen4gin",
+                "sources": [
+                    "gin"
+                ]
+            },
+            {
+                "id": "devtools",
+                "path": "gen/gen4devtools",
+                "sources": [
+                    "devtools"
+                ]
+            },
+            {
+                "id": "demo",
+                "path": "gen/gen4demo",
+                "sources": [
+                    "demo"
+                ]
+            }
+        ]
+    }
+}
