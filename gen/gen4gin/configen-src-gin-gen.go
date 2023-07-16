@@ -1,9 +1,110 @@
 package gen4gin
 import (
+    p0ef6f2938 "github.com/starter-go/application"
     pd1a916a20 "github.com/starter-go/libgin"
     p08eb425b0 "github.com/starter-go/libgin/implements"
      "github.com/starter-go/application"
 )
+
+// type p08eb425b0.ContentTypeResourceLoader in package:github.com/starter-go/libgin/implements
+//
+// id:com-08eb425b0ad6e539-implements-ContentTypeResourceLoader
+// class:class-d1a916a203352fd5d33eabc36896b42e-ContentTypeRegistry
+// alias:
+// scope:singleton
+//
+type p08eb425b0a_implements_ContentTypeResourceLoader struct {
+}
+
+func (inst* p08eb425b0a_implements_ContentTypeResourceLoader) register(cr application.ComponentRegistry) error {
+	r := cr.NewRegistration()
+	r.ID = "com-08eb425b0ad6e539-implements-ContentTypeResourceLoader"
+	r.Classes = "class-d1a916a203352fd5d33eabc36896b42e-ContentTypeRegistry"
+	r.Aliases = ""
+	r.Scope = "singleton"
+	r.NewFunc = inst.new
+	r.InjectFunc = inst.inject
+	return r.Commit()
+}
+
+func (inst* p08eb425b0a_implements_ContentTypeResourceLoader) new() any {
+    return &p08eb425b0.ContentTypeResourceLoader{}
+}
+
+func (inst* p08eb425b0a_implements_ContentTypeResourceLoader) inject(injext application.InjectionExt, instance any) error {
+	ie := injext
+	com := instance.(*p08eb425b0.ContentTypeResourceLoader)
+	nop(ie, com)
+
+	
+    com.Context = inst.getContext(ie)
+    com.TypesProps = inst.getTypesProps(ie)
+
+
+    return nil
+}
+
+
+func (inst*p08eb425b0a_implements_ContentTypeResourceLoader) getContext(ie application.InjectionExt)p0ef6f2938.Context{
+    return ie.GetContext()
+}
+
+
+func (inst*p08eb425b0a_implements_ContentTypeResourceLoader) getTypesProps(ie application.InjectionExt)string{
+    return ie.GetString("${web.content-types.properties}")
+}
+
+
+
+// type p08eb425b0.DefaultContentTypeManager in package:github.com/starter-go/libgin/implements
+//
+// id:com-08eb425b0ad6e539-implements-DefaultContentTypeManager
+// class:
+// alias:alias-d1a916a203352fd5d33eabc36896b42e-ContentTypeManager
+// scope:singleton
+//
+type p08eb425b0a_implements_DefaultContentTypeManager struct {
+}
+
+func (inst* p08eb425b0a_implements_DefaultContentTypeManager) register(cr application.ComponentRegistry) error {
+	r := cr.NewRegistration()
+	r.ID = "com-08eb425b0ad6e539-implements-DefaultContentTypeManager"
+	r.Classes = ""
+	r.Aliases = "alias-d1a916a203352fd5d33eabc36896b42e-ContentTypeManager"
+	r.Scope = "singleton"
+	r.NewFunc = inst.new
+	r.InjectFunc = inst.inject
+	return r.Commit()
+}
+
+func (inst* p08eb425b0a_implements_DefaultContentTypeManager) new() any {
+    return &p08eb425b0.DefaultContentTypeManager{}
+}
+
+func (inst* p08eb425b0a_implements_DefaultContentTypeManager) inject(injext application.InjectionExt, instance any) error {
+	ie := injext
+	com := instance.(*p08eb425b0.DefaultContentTypeManager)
+	nop(ie, com)
+
+	
+    com.All = inst.getAll(ie)
+
+
+    return nil
+}
+
+
+func (inst*p08eb425b0a_implements_DefaultContentTypeManager) getAll(ie application.InjectionExt)[]pd1a916a20.ContentTypeRegistry{
+    dst := make([]pd1a916a20.ContentTypeRegistry, 0)
+    src := ie.ListComponents(".class-d1a916a203352fd5d33eabc36896b42e-ContentTypeRegistry")
+    for _, item1 := range src {
+        item2 := item1.(pd1a916a20.ContentTypeRegistry)
+        dst = append(dst, item2)
+    }
+    return dst
+}
+
+
 
 // type p08eb425b0.DefaultContext in package:github.com/starter-go/libgin/implements
 //
@@ -379,6 +480,68 @@ func (inst*p08eb425b0a_implements_RESTGroup) getName(ie application.InjectionExt
 
 func (inst*p08eb425b0a_implements_RESTGroup) getPath(ie application.InjectionExt)string{
     return ie.GetString("${web-group.rest.path}")
+}
+
+
+
+// type p08eb425b0.StaticController in package:github.com/starter-go/libgin/implements
+//
+// id:com-08eb425b0ad6e539-implements-StaticController
+// class:class-d1a916a203352fd5d33eabc36896b42e-Controller
+// alias:
+// scope:singleton
+//
+type p08eb425b0a_implements_StaticController struct {
+}
+
+func (inst* p08eb425b0a_implements_StaticController) register(cr application.ComponentRegistry) error {
+	r := cr.NewRegistration()
+	r.ID = "com-08eb425b0ad6e539-implements-StaticController"
+	r.Classes = "class-d1a916a203352fd5d33eabc36896b42e-Controller"
+	r.Aliases = ""
+	r.Scope = "singleton"
+	r.NewFunc = inst.new
+	r.InjectFunc = inst.inject
+	return r.Commit()
+}
+
+func (inst* p08eb425b0a_implements_StaticController) new() any {
+    return &p08eb425b0.StaticController{}
+}
+
+func (inst* p08eb425b0a_implements_StaticController) inject(injext application.InjectionExt, instance any) error {
+	ie := injext
+	com := instance.(*p08eb425b0.StaticController)
+	nop(ie, com)
+
+	
+    com.Context = inst.getContext(ie)
+    com.ResPath = inst.getResPath(ie)
+    com.IndexNames = inst.getIndexNames(ie)
+    com.Types = inst.getTypes(ie)
+
+
+    return nil
+}
+
+
+func (inst*p08eb425b0a_implements_StaticController) getContext(ie application.InjectionExt)p0ef6f2938.Context{
+    return ie.GetContext()
+}
+
+
+func (inst*p08eb425b0a_implements_StaticController) getResPath(ie application.InjectionExt)string{
+    return ie.GetString("${web-group.static.resources}")
+}
+
+
+func (inst*p08eb425b0a_implements_StaticController) getIndexNames(ie application.InjectionExt)string{
+    return ie.GetString("${web-group.static.index-names}")
+}
+
+
+func (inst*p08eb425b0a_implements_StaticController) getTypes(ie application.InjectionExt)pd1a916a20.ContentTypeManager{
+    return ie.GetComponent("#alias-d1a916a203352fd5d33eabc36896b42e-ContentTypeManager").(pd1a916a20.ContentTypeManager)
 }
 
 
