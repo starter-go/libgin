@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/starter-go/application"
 	"github.com/starter-go/libgin"
+	"github.com/starter-go/vlog"
 )
 
 // DefaultRouter 默认路由
@@ -17,6 +18,7 @@ type DefaultRouter struct {
 	Context   libgin.Context //starter:inject("#")
 	Name      string         //starter:inject("${web-router.default.name}")
 	GroupList string         //starter:inject("${web-router.default.groups}")
+	GinMode   string         //starter:inject("${gin.mode}")
 
 	engine *gin.Engine
 }
@@ -40,11 +42,26 @@ func (inst *DefaultRouter) Registration() *libgin.RouterRegistration {
 	}
 }
 
+func (inst *DefaultRouter) createEngine() *gin.Engine {
+	mode := inst.GinMode
+	switch mode {
+	case gin.DebugMode:
+		break
+	case gin.ReleaseMode:
+		break
+	default:
+		mode = gin.DebugMode
+		vlog.Warn("the property: 'gin.mode' can be [debug|release]")
+	}
+	gin.SetMode(mode)
+	return gin.Default()
+}
+
 // Engine ...
 func (inst *DefaultRouter) Engine() *gin.Engine {
 	e := inst.engine
 	if e == nil {
-		e = gin.Default()
+		e = inst.createEngine()
 		inst.engine = e
 	}
 	return e

@@ -20,12 +20,12 @@ require (
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.8 // indirect
 	github.com/starter-go/afs v0.9.1 // indirect
-	github.com/starter-go/application v0.9.7 // indirect
+	github.com/starter-go/application v0.9.11 // indirect
 	github.com/starter-go/base v0.9.6 // indirect
 	github.com/starter-go/configen v0.9.2 // indirect
 	github.com/starter-go/rest v0.9.2 // indirect
-	github.com/starter-go/starter v1.0.0 // indirect
-	github.com/starter-go/vlog v0.9.4 // indirect
+	github.com/starter-go/starter v1.0.1 // indirect
+	github.com/starter-go/vlog v0.9.5 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.11 // indirect
 	golang.org/x/arch v0.3.0 // indirect

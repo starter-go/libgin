@@ -270,6 +270,7 @@ func (inst* p08eb425b0a_implements_DefaultRouter) inject(injext application.Inje
     com.Context = inst.getContext(ie)
     com.Name = inst.getName(ie)
     com.GroupList = inst.getGroupList(ie)
+    com.GinMode = inst.getGinMode(ie)
 
 
     return nil
@@ -288,6 +289,11 @@ func (inst*p08eb425b0a_implements_DefaultRouter) getName(ie application.Injectio
 
 func (inst*p08eb425b0a_implements_DefaultRouter) getGroupList(ie application.InjectionExt)string{
     return ie.GetString("${web-router.default.groups}")
+}
+
+
+func (inst*p08eb425b0a_implements_DefaultRouter) getGinMode(ie application.InjectionExt)string{
+    return ie.GetString("${gin.mode}")
 }
 
 
