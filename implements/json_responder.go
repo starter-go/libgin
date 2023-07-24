@@ -7,17 +7,25 @@ import (
 	"github.com/starter-go/base/lang"
 	"github.com/starter-go/libgin"
 	"github.com/starter-go/libgin/web"
-	"github.com/starter-go/rest"
 )
 
+// 这个实现仅供参考，实际应该使用 “github.com/starter-go/module-gin-security” 模块里实现的组件！
 // RESTfulResponder 默认的 RESTful 响应发送器
 type RESTfulResponder struct {
-	//starter:component
-	_as func(libgin.Responder) //starter:as("#")
+	// ## starter:component
+	_as func(libgin.Responder) //starter:as(".")
 }
 
 func (inst *RESTfulResponder) _impl() {
 	inst._as(inst)
+}
+
+func (inst *RESTfulResponder) Registration() *libgin.ResponderRegistration {
+	return nil
+}
+
+func (inst *RESTfulResponder) Accept(resp *libgin.Response) bool {
+	return false
 }
 
 // Send 发送响应
@@ -47,9 +55,9 @@ func (inst *RESTfulResponder) Send(resp *libgin.Response) {
 	}
 	msg = http.StatusText(status)
 
-	baseGetter, ok := data.(rest.BaseGetter)
+	baseGetter, ok := data.(JsonRootGetter)
 	if ok {
-		vo := baseGetter.GetBase()
+		vo := baseGetter.GetRoot()
 		if vo.Message == "" {
 			vo.Message = msg
 		}
@@ -63,4 +71,18 @@ func (inst *RESTfulResponder) Send(resp *libgin.Response) {
 	}
 
 	c.JSON(status, data)
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+type JsonRoot struct {
+	Message   string
+	Error     string
+	Status    int
+	Time      time.Time
+	Timestamp lang.Time
+}
+
+type JsonRootGetter interface {
+	GetRoot() *JsonRoot
 }

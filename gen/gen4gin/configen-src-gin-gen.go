@@ -198,44 +198,6 @@ func (inst*p08eb425b0a_implements_DefaultContext) getDefaultGroupName(ie applica
 
 
 
-// type p08eb425b0.RESTfulResponder in package:github.com/starter-go/libgin/implements
-//
-// id:com-08eb425b0ad6e539-implements-RESTfulResponder
-// class:
-// alias:alias-d1a916a203352fd5d33eabc36896b42e-Responder
-// scope:singleton
-//
-type p08eb425b0a_implements_RESTfulResponder struct {
-}
-
-func (inst* p08eb425b0a_implements_RESTfulResponder) register(cr application.ComponentRegistry) error {
-	r := cr.NewRegistration()
-	r.ID = "com-08eb425b0ad6e539-implements-RESTfulResponder"
-	r.Classes = ""
-	r.Aliases = "alias-d1a916a203352fd5d33eabc36896b42e-Responder"
-	r.Scope = "singleton"
-	r.NewFunc = inst.new
-	r.InjectFunc = inst.inject
-	return r.Commit()
-}
-
-func (inst* p08eb425b0a_implements_RESTfulResponder) new() any {
-    return &p08eb425b0.RESTfulResponder{}
-}
-
-func (inst* p08eb425b0a_implements_RESTfulResponder) inject(injext application.InjectionExt, instance any) error {
-	ie := injext
-	com := instance.(*p08eb425b0.RESTfulResponder)
-	nop(ie, com)
-
-	
-
-
-    return nil
-}
-
-
-
 // type p08eb425b0.DefaultRouter in package:github.com/starter-go/libgin/implements
 //
 // id:com-08eb425b0ad6e539-implements-DefaultRouter
@@ -430,6 +392,56 @@ func (inst*p08eb425b0a_implements_HTTPSConnector) getKeyFile(ie application.Inje
 
 func (inst*p08eb425b0a_implements_HTTPSConnector) getCertFile(ie application.InjectionExt)string{
     return ie.GetString("${server.https.certificate-file}")
+}
+
+
+
+// type p08eb425b0.MainResponder in package:github.com/starter-go/libgin/implements
+//
+// id:com-08eb425b0ad6e539-implements-MainResponder
+// class:
+// alias:alias-d1a916a203352fd5d33eabc36896b42e-Responder
+// scope:singleton
+//
+type p08eb425b0a_implements_MainResponder struct {
+}
+
+func (inst* p08eb425b0a_implements_MainResponder) register(cr application.ComponentRegistry) error {
+	r := cr.NewRegistration()
+	r.ID = "com-08eb425b0ad6e539-implements-MainResponder"
+	r.Classes = ""
+	r.Aliases = "alias-d1a916a203352fd5d33eabc36896b42e-Responder"
+	r.Scope = "singleton"
+	r.NewFunc = inst.new
+	r.InjectFunc = inst.inject
+	return r.Commit()
+}
+
+func (inst* p08eb425b0a_implements_MainResponder) new() any {
+    return &p08eb425b0.MainResponder{}
+}
+
+func (inst* p08eb425b0a_implements_MainResponder) inject(injext application.InjectionExt, instance any) error {
+	ie := injext
+	com := instance.(*p08eb425b0.MainResponder)
+	nop(ie, com)
+
+	
+    com.Responders = inst.getResponders(ie)
+
+
+    return nil
+}
+
+
+func (inst*p08eb425b0a_implements_MainResponder) getResponders(ie application.InjectionExt)[]pd1a916a20.Responder{
+    dst := make([]pd1a916a20.Responder, 0)
+    src := ie.ListComponents(".class-d1a916a203352fd5d33eabc36896b42e-Responder")
+    for _, item1 := range src {
+        item2 := item1.(pd1a916a20.Responder)
+        dst = append(dst, item2)
+    }
+    return dst
 }
 
 

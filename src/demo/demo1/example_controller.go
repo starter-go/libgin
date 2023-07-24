@@ -8,7 +8,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/starter-go/libgin"
 	"github.com/starter-go/libgin/web"
-	"github.com/starter-go/rest"
 )
 
 // ExampleController ...
@@ -76,14 +75,13 @@ func (inst *ExampleController) handleDelete(c *gin.Context) {
 
 // ExampleVO ...
 type ExampleVO struct {
-	rest.BaseVO
+	Status int
 
 	Items []*ExampleDTO `json:"items"`
 }
 
 // ExampleDTO ...
 type ExampleDTO struct {
-	rest.BaseDTO
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -95,7 +93,7 @@ type myExampleRequest struct {
 	wantRequestID   bool
 	wantRequestBody bool
 
-	id    rest.UserID
+	id    int64
 	body1 ExampleVO
 	body2 ExampleVO
 }
@@ -110,7 +108,7 @@ func (inst *myExampleRequest) open() error {
 		if err != nil {
 			return err
 		}
-		inst.id = rest.UserID(n)
+		inst.id = n
 	}
 
 	if inst.wantRequestBody {
