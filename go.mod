@@ -2,6 +2,15 @@ module github.com/starter-go/libgin
 
 go 1.18
 
+// dep:
+// github.com/starter-go/afs 
+// github.com/starter-go/application 
+// github.com/starter-go/base 
+// github.com/starter-go/configen 
+// github.com/starter-go/starter 
+// github.com/starter-go/vlog 
+
+
 require (
 	github.com/bytedance/sonic v1.9.1 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
