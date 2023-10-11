@@ -33,8 +33,8 @@ func (inst *ExampleController) Registration() *libgin.ControllerRegistration {
 	}
 }
 
-func (inst *ExampleController) 配置路由(g *gin.RouterGroup) error {
-	g = g.Group("example")
+func (inst *ExampleController) 配置路由(g libgin.RouterProxy) error {
+	g = g.For("example")
 	g.POST("", inst.handlePost)
 	g.GET("", inst.handleGetList)
 	g.GET(":id", inst.handleGetOne)

@@ -1,7 +1,6 @@
 package implements
 
 import (
-	"github.com/gin-gonic/gin"
 	"github.com/starter-go/libgin"
 )
 
@@ -13,7 +12,7 @@ type group struct {
 
 func (inst *group) route(r libgin.Router) error {
 
-	g, err := inst.prepareGroup(r)
+	proxy, ctx, err := inst.prepareRC(r)
 	if err != nil {
 		return err
 	}
@@ -28,20 +27,27 @@ func (inst *group) route(r libgin.Router) error {
 		if fn == nil {
 			continue
 		}
-		err = fn(g)
+		err = fn(proxy)
 		if err != nil {
 			return err
 		}
 	}
 
-	return nil
+	return ctx.apply()
 }
 
-func (inst *group) prepareGroup(r libgin.Router) (*gin.RouterGroup, error) {
+func (inst *group) prepareRC(r libgin.Router) (libgin.RouterProxy, *routerContext, error) {
 	engine := r.Engine()
-	g := engine.Group(inst.path)
-	return g, nil
+	proxy1 := makeProxyForRouter(engine)
+	proxy2 := proxy1.For(inst.path)
+	return proxy2, proxy1.context, nil
 }
+
+// func (inst *group) prepareGroup(r libgin.Router) (*gin.RouterGroup, error) {
+// 	engine := r.Engine()
+// 	g := engine.Group(inst.path)
+// 	return g, nil
+// }
 
 func (inst *group) listControllers() ([]*libgin.ControllerRegistration, error) {
 	return inst.context.ListControllersForGroup(inst.name)
@@ -54,7 +60,11 @@ type commonGroup struct {
 }
 
 func (inst *commonGroup) Registration() *libgin.GroupRegistration {
-	return &libgin.GroupRegistration{}
+	return &libgin.GroupRegistration{
+		Name:  inst.group.name,
+		Path:  inst.group.path,
+		Group: inst,
+	}
 }
 
 func (inst *commonGroup) Route(r libgin.Router) error {

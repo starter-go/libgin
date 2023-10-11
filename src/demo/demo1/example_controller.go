@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/starter-go/libgin"
 	"github.com/starter-go/libgin/web"
+	"github.com/starter-go/vlog"
 )
 
 // ExampleController ...
@@ -26,14 +27,41 @@ func (inst *ExampleController) Registration() *libgin.ControllerRegistration {
 	return &libgin.ControllerRegistration{Route: inst.route}
 }
 
-func (inst *ExampleController) route(g *gin.RouterGroup) error {
-	g = g.Group("example1")
+func (inst *ExampleController) route(g libgin.RouterProxy) error {
+	g = g.For("example1")
 	g.POST("", inst.handlePost)
 	g.GET("", inst.handleGetList)
 	g.GET(":id", inst.handleGetOne)
 	g.PUT(":id", inst.handlePut)
 	g.DELETE(":id", inst.handleDelete)
+
+	others := []gin.HandlerFunc{}
+	others = []gin.HandlerFunc{inst.handleNoMethod}
+	g.Route(&libgin.Routing{
+		NoMethod: true, Handlers: others, Priority: -10,
+	})
+	others = []gin.HandlerFunc{inst.handleNoRoute}
+	g.Route(&libgin.Routing{
+		NoRoute: true, Handlers: others,
+	})
+	others = []gin.HandlerFunc{inst.handleMid}
+	g.Route(&libgin.Routing{
+		Middleware: true, Handlers: others, Priority: 10,
+	})
+
 	return nil
+}
+
+func (inst *ExampleController) handleNoMethod(c *gin.Context) {
+	vlog.Debug("h:no_method")
+}
+
+func (inst *ExampleController) handleNoRoute(c *gin.Context) {
+	vlog.Debug("h:no_route")
+}
+
+func (inst *ExampleController) handleMid(c *gin.Context) {
+	vlog.Debug("h:middleware")
 }
 
 func (inst *ExampleController) handleGetOne(c *gin.Context) {

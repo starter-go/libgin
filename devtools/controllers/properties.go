@@ -35,8 +35,8 @@ func (inst *PropertyController) Registration() *libgin.ControllerRegistration {
 	}
 }
 
-func (inst *PropertyController) 配置路由(g *gin.RouterGroup) error {
-	g = g.Group("properties")
+func (inst *PropertyController) 配置路由(g libgin.RouterProxy) error {
+	g = g.For("properties")
 	g.POST("", inst.handlePost)
 	g.GET("", inst.handleGetList)
 	g.GET(":id", inst.handleGetOne)

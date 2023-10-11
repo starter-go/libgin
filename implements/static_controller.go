@@ -35,7 +35,7 @@ func (inst *StaticController) Registration() *libgin.ControllerRegistration {
 	}
 }
 
-func (inst *StaticController) r(g *gin.RouterGroup) error {
+func (inst *StaticController) r(g libgin.RouterProxy) error {
 	reslist := inst.listStaticResources()
 	for _, h := range reslist {
 		inst.makeHandler(g, h)
@@ -43,7 +43,7 @@ func (inst *StaticController) r(g *gin.RouterGroup) error {
 	return nil
 }
 
-func (inst *StaticController) makeHandler(g *gin.RouterGroup, h *myStaticResHolder) {
+func (inst *StaticController) makeHandler(g libgin.RouterProxy, h *myStaticResHolder) {
 	path := h.webPath
 	path2 := ""
 	path3 := ""

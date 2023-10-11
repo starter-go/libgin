@@ -9,7 +9,7 @@ import (
 	"github.com/starter-go/libgin/web"
 )
 
-// 这个实现仅供参考，实际应该使用 “github.com/starter-go/module-gin-security” 模块里实现的组件！
+// RESTfulResponder 这个实现仅供参考，实际应该使用 “github.com/starter-go/module-gin-security” 模块里实现的组件！
 // RESTfulResponder 默认的 RESTful 响应发送器
 type RESTfulResponder struct {
 	// ## starter:component
@@ -20,10 +20,12 @@ func (inst *RESTfulResponder) _impl() {
 	inst._as(inst)
 }
 
+// Registration 返回注册信息
 func (inst *RESTfulResponder) Registration() *libgin.ResponderRegistration {
 	return nil
 }
 
+// Accept 确认是否接受传入的响应内容
 func (inst *RESTfulResponder) Accept(resp *libgin.Response) bool {
 	return false
 }
@@ -55,7 +57,7 @@ func (inst *RESTfulResponder) Send(resp *libgin.Response) {
 	}
 	msg = http.StatusText(status)
 
-	baseGetter, ok := data.(JsonRootGetter)
+	baseGetter, ok := data.(JSONRootGetter)
 	if ok {
 		vo := baseGetter.GetRoot()
 		if vo.Message == "" {
@@ -75,7 +77,8 @@ func (inst *RESTfulResponder) Send(resp *libgin.Response) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-type JsonRoot struct {
+// JSONRoot 表示基本的 JSON VO 对象
+type JSONRoot struct {
 	Message   string
 	Error     string
 	Status    int
@@ -83,6 +86,7 @@ type JsonRoot struct {
 	Timestamp lang.Time
 }
 
-type JsonRootGetter interface {
-	GetRoot() *JsonRoot
+// JSONRootGetter 是获取 JSONRoot 的接口
+type JSONRootGetter interface {
+	GetRoot() *JSONRoot
 }

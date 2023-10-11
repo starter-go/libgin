@@ -36,8 +36,8 @@ func (inst *ComponentController) Registration() *libgin.ControllerRegistration {
 	}
 }
 
-func (inst *ComponentController) 配置路由(g *gin.RouterGroup) error {
-	g = g.Group("components")
+func (inst *ComponentController) 配置路由(g libgin.RouterProxy) error {
+	g = g.For("components")
 	g.POST("", inst.handlePost)
 	g.GET("", inst.handleGetList)
 	g.GET(":id", inst.handleGetOne)

@@ -35,8 +35,8 @@ func (inst *EnvironmentController) Registration() *libgin.ControllerRegistration
 	}
 }
 
-func (inst *EnvironmentController) 配置路由(g *gin.RouterGroup) error {
-	g = g.Group("env")
+func (inst *EnvironmentController) 配置路由(g libgin.RouterProxy) error {
+	g = g.For("env")
 	g.POST("", inst.handlePost)
 	g.GET("", inst.handleGetList)
 	g.GET(":id", inst.handleGetOne)
