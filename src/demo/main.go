@@ -6,7 +6,7 @@ import (
 
 	"github.com/starter-go/application"
 	"github.com/starter-go/libgin/gen/gen4demo"
-	"github.com/starter-go/libgin/modulegin"
+	"github.com/starter-go/libgin/modules/libgin"
 	"github.com/starter-go/starter"
 )
 
@@ -26,7 +26,7 @@ func main() {
 	mb.Name(theModuleName).Version(theModuleVersion).Revision(theModuleRevision)
 	mb.EmbedResources(theModuleResFS, theModuleResPath)
 	mb.Components(gen4demo.ExportForDemo)
-	mb.Depend(modulegin.ModuleDevtools())
+	mb.Depend(libgin.ModuleDevtools())
 
 	mod := mb.Create()
 	i := starter.Init(os.Args)

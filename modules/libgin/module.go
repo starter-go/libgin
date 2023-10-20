@@ -1,4 +1,4 @@
-package modulegin
+package libgin
 
 import (
 	"github.com/starter-go/application"
