@@ -56,6 +56,8 @@ github.com/starter-go/base v0.9.6 h1:X+56iD4qO3hd9h7JAl2VbZ1cK4ib3kJzn+ks/4srbp8
 github.com/starter-go/base v0.9.6/go.mod h1:cTaamu+V1rSWCnfkeebl7yVZHlZiBHzxNVZap47wbtw=
 github.com/starter-go/base v0.9.8 h1:RdKmOv/QXa2ba7JI/6+if/UwejvndX4u0WAp4xU7xPM=
 github.com/starter-go/base v0.9.8/go.mod h1:855h0lveIH1dMfP5u2SQp8LWJlgdstRAEM+MV6HRfLg=
+github.com/starter-go/base v0.9.9 h1:XLO0p4VWhMzS/LRnzlSJJdK9/ps0yVWUAaim5oCRJWM=
+github.com/starter-go/base v0.9.9/go.mod h1:855h0lveIH1dMfP5u2SQp8LWJlgdstRAEM+MV6HRfLg=
 github.com/starter-go/configen v0.9.2 h1:UdjHSxFJU15lVbckJF6gANsGLfJSgzz93ZAZZjbP4d8=
 github.com/starter-go/configen v0.9.2/go.mod h1:biLRjMPfuSsAJBoNSNXaMcWle4uIxKvvgu1Xr/8/C/8=
 github.com/starter-go/configen v0.9.3 h1:OJi7A9XncTFhvbKc8ZgSYF+bVDBnnGGhR2u8jS5G5XM=
