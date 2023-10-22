@@ -12,11 +12,11 @@ type DefaultContext struct {
 	//starter:component
 	_as func(libgin.Context) //starter:as("#")
 
-	Controllers      []libgin.Controller //starter:inject(".")
-	Connectors       []libgin.Connector  //starter:inject(".")
-	Routers          []libgin.Router     //starter:inject(".")
-	Groups           []libgin.Group      //starter:inject(".")
-	DefaultGroupName string              //starter:inject("${web.default-group-name}")
+	Controllers      []libgin.Controller        //starter:inject(".")
+	Connectors       []libgin.ConnectorRegistry //starter:inject(".")
+	Routers          []libgin.RouterRegistry    //starter:inject(".")
+	Groups           []libgin.GroupRegistry     //starter:inject(".")
+	DefaultGroupName string                     //starter:inject("${web.default-group-name}")
 
 	inner *contextInner
 }
@@ -186,10 +186,14 @@ func (inst *contextInner) loadControllers(src []libgin.Controller) error {
 	return nil
 }
 
-func (inst *contextInner) loadConnectors(src []libgin.Connector) error {
+func (inst *contextInner) loadConnectors(src []libgin.ConnectorRegistry) error {
 	dst := inst.connectors
+	r2list := make([]*libgin.ConnectorRegistration, 0)
 	for _, r1 := range src {
-		r2 := r1.Registration()
+		list := r1.ListRegistrations()
+		r2list = append(r2list, list...)
+	}
+	for _, r2 := range r2list {
 		name := r2.Name
 		older := dst[name]
 		if older != nil {
@@ -200,10 +204,14 @@ func (inst *contextInner) loadConnectors(src []libgin.Connector) error {
 	return nil
 }
 
-func (inst *contextInner) loadRouters(src []libgin.Router) error {
+func (inst *contextInner) loadRouters(src []libgin.RouterRegistry) error {
 	dst := inst.routers
+	r2list := make([]*libgin.RouterRegistration, 0)
 	for _, r1 := range src {
-		r2 := r1.Registration()
+		list := r1.ListRegistrations()
+		r2list = append(r2list, list...)
+	}
+	for _, r2 := range r2list {
 		name := r2.Name
 		older := dst[name]
 		if older != nil {
@@ -214,10 +222,14 @@ func (inst *contextInner) loadRouters(src []libgin.Router) error {
 	return nil
 }
 
-func (inst *contextInner) loadGroups(src []libgin.Group) error {
+func (inst *contextInner) loadGroups(src []libgin.GroupRegistry) error {
 	dst := inst.groups
+	r2list := make([]*libgin.GroupRegistration, 0)
 	for _, r1 := range src {
-		r2 := r1.Registration()
+		list := r1.ListRegistrations()
+		r2list = append(r2list, list...)
+	}
+	for _, r2 := range r2list {
 		name := r2.Name
 		older := dst[name]
 		if older != nil {

@@ -11,7 +11,7 @@ import (
 // HTTPSConnector 是默认的 HTTPS 连接器
 type HTTPSConnector struct {
 	//starter:component
-	_as func(libgin.Connector) //starter:as(".")
+	_as func(libgin.ConnectorRegistry) //starter:as(".")
 
 	Context  libgin.Context //starter:inject("#")
 	Enabled  bool           //starter:inject("${server.https.enabled}")
@@ -23,12 +23,17 @@ type HTTPSConnector struct {
 	connector connector
 }
 
-// Registration ...
-func (inst *HTTPSConnector) Registration() *libgin.ConnectorRegistration {
-	return &libgin.ConnectorRegistration{
+func (inst *HTTPSConnector) _impl() libgin.ConnectorRegistry {
+	return inst
+}
+
+// ListRegistrations ...
+func (inst *HTTPSConnector) ListRegistrations() []*libgin.ConnectorRegistration {
+	r1 := &libgin.ConnectorRegistration{
 		Name:      "https",
 		Connector: inst,
 	}
+	return []*libgin.ConnectorRegistration{r1}
 }
 
 // Life ...

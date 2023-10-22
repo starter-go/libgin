@@ -12,8 +12,9 @@ import (
 
 // DefaultRouter 默认路由
 type DefaultRouter struct {
+
 	//starter:component
-	_as func(libgin.Router) //starter:as(".")
+	_as func(libgin.RouterRegistry) //starter:as(".")
 
 	Context   libgin.Context //starter:inject("#")
 	Name      string         //starter:inject("${web-router.default.name}")
@@ -23,8 +24,8 @@ type DefaultRouter struct {
 	engine *gin.Engine
 }
 
-func (inst *DefaultRouter) _impl() (libgin.Router, application.Lifecycle) {
-	return inst, inst
+func (inst *DefaultRouter) _impl() (libgin.Router, libgin.RouterRegistry, application.Lifecycle) {
+	return inst, inst, inst
 }
 
 // Life ...
@@ -34,12 +35,13 @@ func (inst *DefaultRouter) Life() *application.Life {
 	}
 }
 
-// Registration ...
-func (inst *DefaultRouter) Registration() *libgin.RouterRegistration {
-	return &libgin.RouterRegistration{
+// ListRegistrations ...
+func (inst *DefaultRouter) ListRegistrations() []*libgin.RouterRegistration {
+	r1 := &libgin.RouterRegistration{
 		Name:   inst.Name,
 		Router: inst,
 	}
+	return []*libgin.RouterRegistration{r1}
 }
 
 func (inst *DefaultRouter) createEngine() *gin.Engine {

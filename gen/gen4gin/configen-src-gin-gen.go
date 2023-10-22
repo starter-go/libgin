@@ -159,33 +159,33 @@ func (inst*p08eb425b0a_implements_DefaultContext) getControllers(ie application.
 }
 
 
-func (inst*p08eb425b0a_implements_DefaultContext) getConnectors(ie application.InjectionExt)[]pd1a916a20.Connector{
-    dst := make([]pd1a916a20.Connector, 0)
-    src := ie.ListComponents(".class-d1a916a203352fd5d33eabc36896b42e-Connector")
+func (inst*p08eb425b0a_implements_DefaultContext) getConnectors(ie application.InjectionExt)[]pd1a916a20.ConnectorRegistry{
+    dst := make([]pd1a916a20.ConnectorRegistry, 0)
+    src := ie.ListComponents(".class-d1a916a203352fd5d33eabc36896b42e-ConnectorRegistry")
     for _, item1 := range src {
-        item2 := item1.(pd1a916a20.Connector)
+        item2 := item1.(pd1a916a20.ConnectorRegistry)
         dst = append(dst, item2)
     }
     return dst
 }
 
 
-func (inst*p08eb425b0a_implements_DefaultContext) getRouters(ie application.InjectionExt)[]pd1a916a20.Router{
-    dst := make([]pd1a916a20.Router, 0)
-    src := ie.ListComponents(".class-d1a916a203352fd5d33eabc36896b42e-Router")
+func (inst*p08eb425b0a_implements_DefaultContext) getRouters(ie application.InjectionExt)[]pd1a916a20.RouterRegistry{
+    dst := make([]pd1a916a20.RouterRegistry, 0)
+    src := ie.ListComponents(".class-d1a916a203352fd5d33eabc36896b42e-RouterRegistry")
     for _, item1 := range src {
-        item2 := item1.(pd1a916a20.Router)
+        item2 := item1.(pd1a916a20.RouterRegistry)
         dst = append(dst, item2)
     }
     return dst
 }
 
 
-func (inst*p08eb425b0a_implements_DefaultContext) getGroups(ie application.InjectionExt)[]pd1a916a20.Group{
-    dst := make([]pd1a916a20.Group, 0)
-    src := ie.ListComponents(".class-d1a916a203352fd5d33eabc36896b42e-Group")
+func (inst*p08eb425b0a_implements_DefaultContext) getGroups(ie application.InjectionExt)[]pd1a916a20.GroupRegistry{
+    dst := make([]pd1a916a20.GroupRegistry, 0)
+    src := ie.ListComponents(".class-d1a916a203352fd5d33eabc36896b42e-GroupRegistry")
     for _, item1 := range src {
-        item2 := item1.(pd1a916a20.Group)
+        item2 := item1.(pd1a916a20.GroupRegistry)
         dst = append(dst, item2)
     }
     return dst
@@ -201,7 +201,7 @@ func (inst*p08eb425b0a_implements_DefaultContext) getDefaultGroupName(ie applica
 // type p08eb425b0.DefaultRouter in package:github.com/starter-go/libgin/implements
 //
 // id:com-08eb425b0ad6e539-implements-DefaultRouter
-// class:class-d1a916a203352fd5d33eabc36896b42e-Router
+// class:class-d1a916a203352fd5d33eabc36896b42e-RouterRegistry
 // alias:
 // scope:singleton
 //
@@ -211,7 +211,7 @@ type p08eb425b0a_implements_DefaultRouter struct {
 func (inst* p08eb425b0a_implements_DefaultRouter) register(cr application.ComponentRegistry) error {
 	r := cr.NewRegistration()
 	r.ID = "com-08eb425b0ad6e539-implements-DefaultRouter"
-	r.Classes = "class-d1a916a203352fd5d33eabc36896b42e-Router"
+	r.Classes = "class-d1a916a203352fd5d33eabc36896b42e-RouterRegistry"
 	r.Aliases = ""
 	r.Scope = "singleton"
 	r.NewFunc = inst.new
@@ -263,7 +263,7 @@ func (inst*p08eb425b0a_implements_DefaultRouter) getGinMode(ie application.Injec
 // type p08eb425b0.HTTPConnector in package:github.com/starter-go/libgin/implements
 //
 // id:com-08eb425b0ad6e539-implements-HTTPConnector
-// class:class-d1a916a203352fd5d33eabc36896b42e-Connector
+// class:class-d1a916a203352fd5d33eabc36896b42e-ConnectorRegistry
 // alias:
 // scope:singleton
 //
@@ -273,7 +273,7 @@ type p08eb425b0a_implements_HTTPConnector struct {
 func (inst* p08eb425b0a_implements_HTTPConnector) register(cr application.ComponentRegistry) error {
 	r := cr.NewRegistration()
 	r.ID = "com-08eb425b0ad6e539-implements-HTTPConnector"
-	r.Classes = "class-d1a916a203352fd5d33eabc36896b42e-Connector"
+	r.Classes = "class-d1a916a203352fd5d33eabc36896b42e-ConnectorRegistry"
 	r.Aliases = ""
 	r.Scope = "singleton"
 	r.NewFunc = inst.new
@@ -325,7 +325,7 @@ func (inst*p08eb425b0a_implements_HTTPConnector) getEnabled(ie application.Injec
 // type p08eb425b0.HTTPSConnector in package:github.com/starter-go/libgin/implements
 //
 // id:com-08eb425b0ad6e539-implements-HTTPSConnector
-// class:class-d1a916a203352fd5d33eabc36896b42e-Connector
+// class:class-d1a916a203352fd5d33eabc36896b42e-ConnectorRegistry
 // alias:
 // scope:singleton
 //
@@ -335,7 +335,7 @@ type p08eb425b0a_implements_HTTPSConnector struct {
 func (inst* p08eb425b0a_implements_HTTPSConnector) register(cr application.ComponentRegistry) error {
 	r := cr.NewRegistration()
 	r.ID = "com-08eb425b0ad6e539-implements-HTTPSConnector"
-	r.Classes = "class-d1a916a203352fd5d33eabc36896b42e-Connector"
+	r.Classes = "class-d1a916a203352fd5d33eabc36896b42e-ConnectorRegistry"
 	r.Aliases = ""
 	r.Scope = "singleton"
 	r.NewFunc = inst.new
@@ -427,18 +427,18 @@ func (inst* p08eb425b0a_implements_MainResponder) inject(injext application.Inje
 	nop(ie, com)
 
 	
-    com.Responders = inst.getResponders(ie)
+    com.ResponderRegs = inst.getResponderRegs(ie)
 
 
     return nil
 }
 
 
-func (inst*p08eb425b0a_implements_MainResponder) getResponders(ie application.InjectionExt)[]pd1a916a20.Responder{
-    dst := make([]pd1a916a20.Responder, 0)
-    src := ie.ListComponents(".class-d1a916a203352fd5d33eabc36896b42e-Responder")
+func (inst*p08eb425b0a_implements_MainResponder) getResponderRegs(ie application.InjectionExt)[]pd1a916a20.ResponderRegistry{
+    dst := make([]pd1a916a20.ResponderRegistry, 0)
+    src := ie.ListComponents(".class-d1a916a203352fd5d33eabc36896b42e-ResponderRegistry")
     for _, item1 := range src {
-        item2 := item1.(pd1a916a20.Responder)
+        item2 := item1.(pd1a916a20.ResponderRegistry)
         dst = append(dst, item2)
     }
     return dst
@@ -446,20 +446,20 @@ func (inst*p08eb425b0a_implements_MainResponder) getResponders(ie application.In
 
 
 
-// type p08eb425b0.RESTGroup in package:github.com/starter-go/libgin/implements
+// type p08eb425b0.RESTGroupRegistry in package:github.com/starter-go/libgin/implements
 //
-// id:com-08eb425b0ad6e539-implements-RESTGroup
-// class:class-d1a916a203352fd5d33eabc36896b42e-Group
+// id:com-08eb425b0ad6e539-implements-RESTGroupRegistry
+// class:class-d1a916a203352fd5d33eabc36896b42e-GroupRegistry
 // alias:
 // scope:singleton
 //
-type p08eb425b0a_implements_RESTGroup struct {
+type p08eb425b0a_implements_RESTGroupRegistry struct {
 }
 
-func (inst* p08eb425b0a_implements_RESTGroup) register(cr application.ComponentRegistry) error {
+func (inst* p08eb425b0a_implements_RESTGroupRegistry) register(cr application.ComponentRegistry) error {
 	r := cr.NewRegistration()
-	r.ID = "com-08eb425b0ad6e539-implements-RESTGroup"
-	r.Classes = "class-d1a916a203352fd5d33eabc36896b42e-Group"
+	r.ID = "com-08eb425b0ad6e539-implements-RESTGroupRegistry"
+	r.Classes = "class-d1a916a203352fd5d33eabc36896b42e-GroupRegistry"
 	r.Aliases = ""
 	r.Scope = "singleton"
 	r.NewFunc = inst.new
@@ -467,37 +467,37 @@ func (inst* p08eb425b0a_implements_RESTGroup) register(cr application.ComponentR
 	return r.Commit()
 }
 
-func (inst* p08eb425b0a_implements_RESTGroup) new() any {
-    return &p08eb425b0.RESTGroup{}
+func (inst* p08eb425b0a_implements_RESTGroupRegistry) new() any {
+    return &p08eb425b0.RESTGroupRegistry{}
 }
 
-func (inst* p08eb425b0a_implements_RESTGroup) inject(injext application.InjectionExt, instance any) error {
+func (inst* p08eb425b0a_implements_RESTGroupRegistry) inject(injext application.InjectionExt, instance any) error {
 	ie := injext
-	com := instance.(*p08eb425b0.RESTGroup)
+	com := instance.(*p08eb425b0.RESTGroupRegistry)
 	nop(ie, com)
 
 	
+    com.AC = inst.getAC(ie)
     com.Context = inst.getContext(ie)
-    com.Name = inst.getName(ie)
-    com.Path = inst.getPath(ie)
+    com.GroupIDList = inst.getGroupIDList(ie)
 
 
     return nil
 }
 
 
-func (inst*p08eb425b0a_implements_RESTGroup) getContext(ie application.InjectionExt)pd1a916a20.Context{
+func (inst*p08eb425b0a_implements_RESTGroupRegistry) getAC(ie application.InjectionExt)p0ef6f2938.Context{
+    return ie.GetContext()
+}
+
+
+func (inst*p08eb425b0a_implements_RESTGroupRegistry) getContext(ie application.InjectionExt)pd1a916a20.Context{
     return ie.GetComponent("#alias-d1a916a203352fd5d33eabc36896b42e-Context").(pd1a916a20.Context)
 }
 
 
-func (inst*p08eb425b0a_implements_RESTGroup) getName(ie application.InjectionExt)string{
-    return ie.GetString("${web-group.rest.name}")
-}
-
-
-func (inst*p08eb425b0a_implements_RESTGroup) getPath(ie application.InjectionExt)string{
-    return ie.GetString("${web-group.rest.path}")
+func (inst*p08eb425b0a_implements_RESTGroupRegistry) getGroupIDList(ie application.InjectionExt)string{
+    return ie.GetString("${web.groups}")
 }
 
 

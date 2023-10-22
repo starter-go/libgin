@@ -8,13 +8,19 @@ const (
 
 // Group ...
 type Group interface {
-	Registration() *GroupRegistration
+	// Registration( ... ) *GroupRegistration
 	Route(r Router) error
+}
+
+// GroupRegistry ...
+type GroupRegistry interface {
+	ListRegistrations() []*GroupRegistration
 }
 
 // GroupRegistration ...
 type GroupRegistration struct {
-	Name  string
-	Path  string
-	Group Group
+	Enabled bool
+	Name    string
+	Path    string
+	Group   Group
 }

@@ -13,18 +13,18 @@ type MainResponder struct {
 	//starter:component
 	_as func(libgin.Responder) //starter:as("#")
 
-	Responders []libgin.Responder //starter:inject(".")
+	ResponderRegs []libgin.ResponderRegistry //starter:inject(".")
 
 	cached []*libgin.ResponderRegistration
 }
 
-func (inst *MainResponder) _impl() {
-	inst._as(inst)
+func (inst *MainResponder) _impl() (libgin.ResponderRegistry, libgin.Responder) {
+	return inst, inst
 }
 
-// Registration ...
-func (inst *MainResponder) Registration() *libgin.ResponderRegistration {
-	return &libgin.ResponderRegistration{}
+// ListRegistrations ...
+func (inst *MainResponder) ListRegistrations() []*libgin.ResponderRegistration {
+	return []*libgin.ResponderRegistration{}
 }
 
 // Accept ...
@@ -71,15 +71,17 @@ func (inst *MainResponder) getRegistrationList() []*libgin.ResponderRegistration
 }
 
 func (inst *MainResponder) loadRegistrationList() []*libgin.ResponderRegistration {
-	src := inst.Responders
+	src := inst.ResponderRegs
 	dst := make([]*libgin.ResponderRegistration, 0)
 	for _, r1 := range src {
 		if r1 == nil {
 			continue
 		}
-		r2 := r1.Registration()
-		if inst.isReady(r2) {
-			dst = append(dst, r2)
+		r2list := r1.ListRegistrations()
+		for _, r2 := range r2list {
+			if inst.isReady(r2) {
+				dst = append(dst, r2)
+			}
 		}
 	}
 	return inst.sort(dst)

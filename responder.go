@@ -13,7 +13,7 @@ type Response struct {
 
 // Responder 是 REST 响应发送器的接口
 type Responder interface {
-	ResponderRegistry
+	// ResponderRegistry
 
 	Accept(resp *Response) bool
 
@@ -30,5 +30,5 @@ type ResponderRegistration struct {
 
 // ResponderRegistry 是 Responder 的注册接口
 type ResponderRegistry interface {
-	Registration() *ResponderRegistration
+	ListRegistrations() []*ResponderRegistration
 }

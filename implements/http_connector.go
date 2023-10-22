@@ -9,8 +9,9 @@ import (
 
 // HTTPConnector 是默认的 HTTP 连接器
 type HTTPConnector struct {
+
 	//starter:component
-	_as func(libgin.Connector) //starter:as(".")
+	_as func(libgin.ConnectorRegistry) //starter:as(".")
 
 	Context libgin.Context //starter:inject("#")
 	Host    string         //starter:inject("${server.http.host}")
@@ -20,12 +21,17 @@ type HTTPConnector struct {
 	connector connector
 }
 
-// Registration ...
-func (inst *HTTPConnector) Registration() *libgin.ConnectorRegistration {
-	return &libgin.ConnectorRegistration{
+func (inst *HTTPConnector) _impl() libgin.ConnectorRegistry {
+	return inst
+}
+
+// ListRegistrations ...
+func (inst *HTTPConnector) ListRegistrations() []*libgin.ConnectorRegistration {
+	r1 := &libgin.ConnectorRegistration{
 		Name:      "http",
 		Connector: inst,
 	}
+	return []*libgin.ConnectorRegistration{r1}
 }
 
 // Life ...

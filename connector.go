@@ -2,7 +2,12 @@ package libgin
 
 // Connector ...
 type Connector interface {
-	Registration() *ConnectorRegistration
+	// Registration( ... ) *ConnectorRegistration
+}
+
+// ConnectorRegistry ...
+type ConnectorRegistry interface {
+	ListRegistrations() []*ConnectorRegistration
 }
 
 // ConnectorRegistration ...

@@ -11,6 +11,7 @@ import (
 
 // DefaultContentTypeManager ...
 type DefaultContentTypeManager struct {
+
 	//starter:component
 	_as func(libgin.ContentTypeManager) //starter:as("#")
 
