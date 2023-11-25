@@ -8,10 +8,12 @@ import (
 	"github.com/starter-go/application"
 	"github.com/starter-go/application/resources"
 	"github.com/starter-go/libgin"
+	"github.com/starter-go/vlog"
 )
 
 // StaticController 是静态资源控制器，它负责把静态的web资源注册到 static-group
 type StaticController struct {
+
 	//starter:component
 	_as func(libgin.Controller) //starter:as(".")
 
@@ -44,36 +46,25 @@ func (inst *StaticController) r(g libgin.RouterProxy) error {
 }
 
 func (inst *StaticController) makeHandler(g libgin.RouterProxy, h *myStaticResHolder) {
+
+	method := http.MethodGet
 	path := h.webPath
-	path2 := ""
-	path3 := ""
+	asIndex := inst.isIndexName(h.simpleName)
 
-	if inst.isIndexName(h.simpleName) {
-		i := strings.LastIndex(path, "/")
-		if i >= 0 {
-			path2 = path[0:i]
-			path3 = path[0 : i+1]
-		}
-	}
-
-	g.GET(path, func(c *gin.Context) {
+	handler := func(c *gin.Context) {
 		data := h.getData()
 		c.Data(http.StatusOK, h.contentType, data)
-	})
-
-	if path3 != "" {
-		g.GET(path3, func(c *gin.Context) {
-			data := h.getData()
-			c.Data(http.StatusOK, h.contentType, data)
-		})
 	}
 
-	if path2 != "" {
-		g.GET(path2, func(c *gin.Context) {
-			data := "redirect to " + path3
-			c.Header("Location", path3)
-			c.Data(http.StatusTemporaryRedirect, "text/plain", []byte(data))
-		})
+	g.Route(&libgin.Routing{
+		Method:      method,
+		Path:        path,
+		AsIndexPage: asIndex,
+		Handlers:    []gin.HandlerFunc{handler},
+	})
+
+	if vlog.IsDebugEnabled() {
+		vlog.Debug("static handler to %s %s", method, path)
 	}
 }
 

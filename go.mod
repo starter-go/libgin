@@ -1,6 +1,6 @@
 module github.com/starter-go/libgin
 
-go 1.18
+go 1.20
 
 require (
 	github.com/bytedance/sonic v1.9.1 // indirect
@@ -24,7 +24,7 @@ require (
 	github.com/starter-go/base v0.9.9 // indirect
 	github.com/starter-go/configen v0.9.3 // indirect
 	github.com/starter-go/starter v1.0.3 // indirect
-	github.com/starter-go/vlog v0.9.5 // indirect
+	github.com/starter-go/vlog v0.9.6 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.11 // indirect
 	golang.org/x/arch v0.3.0 // indirect

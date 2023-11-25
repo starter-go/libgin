@@ -289,6 +289,7 @@ func (inst* p0f3e25981e_groups_DevtoolsGroup) inject(injext application.Injectio
 
 	
     com.Context = inst.getContext(ie)
+    com.Enabled = inst.getEnabled(ie)
 
 
     return nil
@@ -297,6 +298,11 @@ func (inst* p0f3e25981e_groups_DevtoolsGroup) inject(injext application.Injectio
 
 func (inst*p0f3e25981e_groups_DevtoolsGroup) getContext(ie application.InjectionExt)pd1a916a20.Context{
     return ie.GetComponent("#alias-d1a916a203352fd5d33eabc36896b42e-Context").(pd1a916a20.Context)
+}
+
+
+func (inst*p0f3e25981e_groups_DevtoolsGroup) getEnabled(ie application.InjectionExt)bool{
+    return ie.GetBool("${web-group.devtools.enabled}")
 }
 
 

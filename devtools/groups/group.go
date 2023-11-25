@@ -7,18 +7,21 @@ import (
 
 // DevtoolsGroup ...
 type DevtoolsGroup struct {
+
 	//starter:component
 	_as func(libgin.Group) //starter:as(".")
 
 	Context libgin.Context //starter:inject("#")
+	Enabled bool           //starter:inject("${web-group.devtools.enabled}")
 }
 
 // Registration ...
 func (inst *DevtoolsGroup) Registration() *libgin.GroupRegistration {
 	return &libgin.GroupRegistration{
-		Name:  "devtools",
-		Path:  "/api/devtools/",
-		Group: inst,
+		Name:    "devtools",
+		Path:    "/api/devtools/",
+		Group:   inst,
+		Enabled: inst.Enabled,
 	}
 }
 

@@ -1,6 +1,7 @@
 package implements
 
 import (
+	"fmt"
 	"net/http"
 	"sort"
 	"strings"
@@ -116,7 +117,28 @@ func (inst *routerProxy) Route(r *libgin.Routing) {
 	path2 := inst.normalizePath(r.Path)
 	r.Path = path2
 	list = append(list, r)
+	if r.AsIndexPage {
+		r2, err := inst.makeRoutingForIndexPage(r)
+		if err == nil {
+			list = append(list, r2)
+		}
+	}
 	inst.context.routingList = list
+}
+
+func (inst *routerProxy) makeRoutingForIndexPage(src *libgin.Routing) (*libgin.Routing, error) {
+
+	path := src.Path
+	i := strings.LastIndex(path, "/")
+	if i < 0 {
+		return nil, fmt.Errorf("bad index page path: %s", path)
+	}
+	path = path[0 : i+1]
+
+	dst := &libgin.Routing{}
+	*dst = *src
+	dst.Path = path
+	return dst, nil
 }
 
 func (inst *routerProxy) Handle(method string, path string, h ...gin.HandlerFunc) {

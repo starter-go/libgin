@@ -80,6 +80,8 @@ github.com/starter-go/vlog v0.9.4 h1:9nVRk46Tco2UHXJDKbShK5SbGDUxxVKxCXUbGOOUe6A
 github.com/starter-go/vlog v0.9.4/go.mod h1:WSaU9IGbEaDe/Eoh2W8JOjSn6wdjfGkgBbxJxaqUI/0=
 github.com/starter-go/vlog v0.9.5 h1:Rh5L8KjicweDjH5UDKVQzqG2Q9/y63G1TWHe8u6VZpk=
 github.com/starter-go/vlog v0.9.5/go.mod h1:WSaU9IGbEaDe/Eoh2W8JOjSn6wdjfGkgBbxJxaqUI/0=
+github.com/starter-go/vlog v0.9.6 h1:d75KOtNTug6tXQ1gkf3kh33AUJUquSWR7yiACVSMcss=
+github.com/starter-go/vlog v0.9.6/go.mod h1:WSaU9IGbEaDe/Eoh2W8JOjSn6wdjfGkgBbxJxaqUI/0=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/objx v0.4.0/go.mod h1:YvHI0jy2hoMjB+UWwv71VJQ9isScKT/TqJzVSSt89Yw=
 github.com/stretchr/objx v0.5.0/go.mod h1:Yh+to48EsGEfYuaHDzXPcE3xhTkx73EhmCGUpEOglKo=
