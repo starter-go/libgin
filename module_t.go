@@ -9,8 +9,8 @@ import (
 
 const (
 	theModuleName     = "github.com/starter-go/libgin"
-	theModuleVersion  = "v1.0.8"
-	theModuleRevision = 9
+	theModuleVersion  = "v1.0.9"
+	theModuleRevision = 10
 
 	theMainModuleResPath     = "src/main/resources"
 	theDemoModuleResPath     = "src/demo/resources"
