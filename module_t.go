@@ -8,36 +8,59 @@ import (
 )
 
 const (
-	theModuleName      = "github.com/starter-go/libgin"
-	theModuleVersion   = "v1.0.8"
-	theModuleRevision  = 9
-	theModuleResPath   = "src/main/resources"
-	theModuleResPathDT = "src/devtools/resources"
+	theModuleName     = "github.com/starter-go/libgin"
+	theModuleVersion  = "v1.0.8"
+	theModuleRevision = 9
+
+	theMainModuleResPath     = "src/main/resources"
+	theDemoModuleResPath     = "src/demo/resources"
+	theDevtoolsModuleResPath = "src/devtools/resources"
 )
 
 //go:embed "src/main/resources"
-var theModuleResFS embed.FS
+var theMainModuleResFS embed.FS
+
+//go:embed "src/demo/resources"
+var theDemoModuleResFS embed.FS
 
 //go:embed "src/devtools/resources"
-var theModuleResFSDT embed.FS
+var theDevtoolsModuleResFS embed.FS
 
-// NewModule 导出模块 [github.com/starter-go/libgin]
-func NewModule() *application.ModuleBuilder {
+// NewMainModule 导出模块 [github.com/starter-go/libgin]
+func NewMainModule() *application.ModuleBuilder {
+
 	mb := &application.ModuleBuilder{}
-	mb.Name(theModuleName).Version(theModuleVersion).Revision(theModuleRevision)
-	mb.EmbedResources(theModuleResFS, theModuleResPath)
-	// mb.Components(gen4gin.ExportForGin)
+	mb.Name(theModuleName)
+	mb.Version(theModuleVersion)
+	mb.Revision(theModuleRevision)
+	mb.EmbedResources(theMainModuleResFS, theMainModuleResPath)
+
 	mb.Depend(starter.Module())
-	return mb // .Create()
+	return mb
 }
 
-// NewModuleDevtools 导出模块 [github.com/starter-go/libgin#devtools]
-func NewModuleDevtools() *application.ModuleBuilder {
+// NewDevtoolsModule 导出模块 [github.com/starter-go/libgin#devtools]
+func NewDevtoolsModule() *application.ModuleBuilder {
+
 	mb := &application.ModuleBuilder{}
-	mb.Name(theModuleName + "#devtools").Version(theModuleVersion).Revision(theModuleRevision)
-	mb.EmbedResources(theModuleResFSDT, theModuleResPathDT)
-	// mb.Components(gen4devtools.ExportForDevtools)
-	// mb.Depend(Module())
+	mb.Name(theModuleName + "#devtools")
+	mb.Version(theModuleVersion)
+	mb.Revision(theModuleRevision)
+	mb.EmbedResources(theDevtoolsModuleResFS, theDevtoolsModuleResPath)
+
 	mb.Depend(starter.Module())
-	return mb // .Create()
+	return mb
+}
+
+// NewDemoModule 创建模块 [github.com/starter-go/libgin#demo]
+func NewDemoModule() *application.ModuleBuilder {
+
+	mb := &application.ModuleBuilder{}
+	mb.Name(theModuleName + "#demo")
+	mb.Version(theModuleVersion)
+	mb.Revision(theModuleRevision)
+	mb.EmbedResources(theDemoModuleResFS, theDemoModuleResPath)
+
+	mb.Depend(starter.Module())
+	return mb
 }

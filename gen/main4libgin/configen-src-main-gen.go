@@ -1,4 +1,4 @@
-package gen4gin
+package main4libgin
 import (
     p0ef6f2938 "github.com/starter-go/application"
     pd1a916a20 "github.com/starter-go/libgin"

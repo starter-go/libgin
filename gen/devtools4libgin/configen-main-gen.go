@@ -1,4 +1,4 @@
-package gen4devtools
+package devtools4libgin
 
 import "github.com/starter-go/application"
 

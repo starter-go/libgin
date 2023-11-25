@@ -1,4 +1,4 @@
-package gen4demo
+package demo4libgin
 
 import "github.com/starter-go/application"
 
@@ -30,7 +30,7 @@ func (inst *autoRegistrar) register(factory comFactory) error {
 func (inst*autoRegistrar) addAll() error {
 
     
-    inst.register(&p8597db6cfe_demo1_ExampleController{})
+    inst.register(&p4e2855b323_demo1_ExampleController{})
 
 
     return nil
