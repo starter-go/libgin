@@ -72,6 +72,8 @@ github.com/starter-go/configen v0.9.3 h1:OJi7A9XncTFhvbKc8ZgSYF+bVDBnnGGhR2u8jS5
 github.com/starter-go/configen v0.9.3/go.mod h1:F0Pw1TAmyIiahcuPBqywIM0nxaYGMD9o4FahvcH2AEQ=
 github.com/starter-go/configen v0.9.5 h1:KTwueLMQA3Ba70sJddK+hOLEifOI0dTXpPkX/jiBjIo=
 github.com/starter-go/configen v0.9.5/go.mod h1:n3qiv4z1nZ0h4qfcX9Ju8kUMgjuLUkv0EvL6lxQOwtQ=
+github.com/starter-go/rbac v0.0.1 h1:lreMbRRyrJV2xPeotS9cetiS7vC2CttodzfLtZY1+0o=
+github.com/starter-go/rbac v0.0.1/go.mod h1:N93w2twpuiCD1yDDBeVyRm2a+Voz0OIpIpxpuox7fUY=
 github.com/starter-go/rest v0.9.0 h1:8O2ZAFZsdN1CozUTfmlF+EGDPZGmNnlHthq/b9zBc/M=
 github.com/starter-go/rest v0.9.0/go.mod h1:TnZ7byw+CiS4u/iXLw4VTkpDMt0YEyrU6tRkI5w4g9c=
 github.com/starter-go/rest v0.9.1 h1:ZDvYEJpbcRshy3NY8qrOVopUEuKqclfF+sSRShRD2Us=

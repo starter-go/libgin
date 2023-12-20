@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/starter-go/libgin"
 	"github.com/starter-go/libgin/web"
+	"github.com/starter-go/rbac"
 	"github.com/starter-go/vlog"
 )
 
@@ -103,13 +104,14 @@ func (inst *ExampleController) handleDelete(c *gin.Context) {
 
 // ExampleVO ...
 type ExampleVO struct {
-	Status int
+	rbac.BaseVO
 
 	Items []*ExampleDTO `json:"items"`
 }
 
 // ExampleDTO ...
 type ExampleDTO struct {
+	rbac.BaseDTO
 }
 
 ////////////////////////////////////////////////////////////////////////////////

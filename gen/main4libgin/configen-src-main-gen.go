@@ -396,6 +396,44 @@ func (inst*p08eb425b0a_implements_HTTPSConnector) getCertFile(ie application.Inj
 
 
 
+// type p08eb425b0.JSONGinResponder in package:github.com/starter-go/libgin/implements
+//
+// id:com-08eb425b0ad6e539-implements-JSONGinResponder
+// class:class-d1a916a203352fd5d33eabc36896b42e-ResponderRegistry class-d1a916a203352fd5d33eabc36896b42e-Responder
+// alias:
+// scope:singleton
+//
+type p08eb425b0a_implements_JSONGinResponder struct {
+}
+
+func (inst* p08eb425b0a_implements_JSONGinResponder) register(cr application.ComponentRegistry) error {
+	r := cr.NewRegistration()
+	r.ID = "com-08eb425b0ad6e539-implements-JSONGinResponder"
+	r.Classes = "class-d1a916a203352fd5d33eabc36896b42e-ResponderRegistry class-d1a916a203352fd5d33eabc36896b42e-Responder"
+	r.Aliases = ""
+	r.Scope = "singleton"
+	r.NewFunc = inst.new
+	r.InjectFunc = inst.inject
+	return r.Commit()
+}
+
+func (inst* p08eb425b0a_implements_JSONGinResponder) new() any {
+    return &p08eb425b0.JSONGinResponder{}
+}
+
+func (inst* p08eb425b0a_implements_JSONGinResponder) inject(injext application.InjectionExt, instance any) error {
+	ie := injext
+	com := instance.(*p08eb425b0.JSONGinResponder)
+	nop(ie, com)
+
+	
+
+
+    return nil
+}
+
+
+
 // type p08eb425b0.MainResponder in package:github.com/starter-go/libgin/implements
 //
 // id:com-08eb425b0ad6e539-implements-MainResponder

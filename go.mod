@@ -23,6 +23,7 @@ require (
 	github.com/starter-go/application v0.9.18 // indirect
 	github.com/starter-go/base v0.9.11 // indirect
 	github.com/starter-go/configen v0.9.5 // indirect
+	github.com/starter-go/rbac v0.0.1 // indirect
 	github.com/starter-go/starter v1.0.7 // indirect
 	github.com/starter-go/vlog v0.9.7 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect

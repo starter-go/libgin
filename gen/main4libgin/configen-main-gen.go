@@ -36,6 +36,7 @@ func (inst*autoRegistrar) addAll() error {
     inst.register(&p08eb425b0a_implements_DefaultRouter{})
     inst.register(&p08eb425b0a_implements_HTTPConnector{})
     inst.register(&p08eb425b0a_implements_HTTPSConnector{})
+    inst.register(&p08eb425b0a_implements_JSONGinResponder{})
     inst.register(&p08eb425b0a_implements_MainResponder{})
     inst.register(&p08eb425b0a_implements_RESTGroupRegistry{})
     inst.register(&p08eb425b0a_implements_StaticController{})
