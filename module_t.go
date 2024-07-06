@@ -8,9 +8,13 @@ import (
 
 const (
 	theModuleName     = "github.com/starter-go/libgin"
-	theModuleVersion  = "v1.0.11"
-	theModuleRevision = 12
+	theModuleVersion  = "v1.0.12"
+	theModuleRevision = 13
+)
 
+////////////////////////////////////////////////////////////////////////////////
+
+const (
 	theMainModuleResPath     = "src/main/resources"
 	theDemoModuleResPath     = "src/demo/resources"
 	theDevtoolsModuleResPath = "src/devtools/resources"
@@ -24,6 +28,8 @@ var theDemoModuleResFS embed.FS
 
 //go:embed "src/devtools/resources"
 var theDevtoolsModuleResFS embed.FS
+
+////////////////////////////////////////////////////////////////////////////////
 
 // NewMainModule 导出模块 [github.com/starter-go/libgin]
 func NewMainModule() *application.ModuleBuilder {
