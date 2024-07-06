@@ -6,6 +6,7 @@ import (
 
 	"github.com/starter-go/application"
 	"github.com/starter-go/libgin"
+	"github.com/starter-go/stopper"
 )
 
 // HTTPSConnector 是默认的 HTTPS 连接器
@@ -13,12 +14,15 @@ type HTTPSConnector struct {
 	//starter:component
 	_as func(libgin.ConnectorRegistry) //starter:as(".")
 
-	Context  libgin.Context //starter:inject("#")
-	Enabled  bool           //starter:inject("${server.https.enabled}")
-	Host     string         //starter:inject("${server.https.host}")
-	Port     int            //starter:inject("${server.https.port}")
-	KeyFile  string         //starter:inject("${server.https.key-file}")
-	CertFile string         //starter:inject("${server.https.certificate-file}")
+	AppContext application.Context //starter:inject("context")
+	Context    libgin.Context      //starter:inject("#")
+	Stopper    stopper.Service     //starter:inject("#")
+
+	Enabled  bool   //starter:inject("${server.https.enabled}")
+	Host     string //starter:inject("${server.https.host}")
+	Port     int    //starter:inject("${server.https.port}")
+	KeyFile  string //starter:inject("${server.https.key-file}")
+	CertFile string //starter:inject("${server.https.certificate-file}")
 
 	connector connector
 }
@@ -38,6 +42,12 @@ func (inst *HTTPSConnector) ListRegistrations() []*libgin.ConnectorRegistration 
 
 // Life ...
 func (inst *HTTPSConnector) Life() *application.Life {
+
+	action := stopper.GetAction(inst.AppContext)
+	if action == stopper.ActionStop {
+		return &application.Life{} // 如果正在执行停止动作， 则返回空的 life
+	}
+
 	return &application.Life{
 		OnCreate:   inst.init,
 		OnStart:    inst.start,
@@ -79,6 +89,7 @@ func (inst *HTTPSConnector) stopPost() error {
 }
 
 func (inst *HTTPSConnector) loop() error {
-	inst.connector.waitForStopping()
+	// 这里不需要等待了，用 stopper 的 loop 代替
+	// inst.connector.waitForStopping()
 	return nil
 }

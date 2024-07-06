@@ -4,7 +4,6 @@ import (
 	"embed"
 
 	"github.com/starter-go/application"
-	"github.com/starter-go/starter"
 )
 
 const (
@@ -34,8 +33,6 @@ func NewMainModule() *application.ModuleBuilder {
 	mb.Version(theModuleVersion)
 	mb.Revision(theModuleRevision)
 	mb.EmbedResources(theMainModuleResFS, theMainModuleResPath)
-
-	mb.Depend(starter.Module())
 	return mb
 }
 
@@ -47,8 +44,6 @@ func NewDevtoolsModule() *application.ModuleBuilder {
 	mb.Version(theModuleVersion)
 	mb.Revision(theModuleRevision)
 	mb.EmbedResources(theDevtoolsModuleResFS, theDevtoolsModuleResPath)
-
-	mb.Depend(starter.Module())
 	return mb
 }
 
@@ -60,7 +55,5 @@ func NewDemoModule() *application.ModuleBuilder {
 	mb.Version(theModuleVersion)
 	mb.Revision(theModuleRevision)
 	mb.EmbedResources(theDemoModuleResFS, theDemoModuleResPath)
-
-	mb.Depend(starter.Module())
 	return mb
 }

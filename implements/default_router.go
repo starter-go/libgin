@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/starter-go/application"
 	"github.com/starter-go/libgin"
+	"github.com/starter-go/stopper"
 	"github.com/starter-go/vlog"
 )
 
@@ -16,10 +17,11 @@ type DefaultRouter struct {
 	//starter:component
 	_as func(libgin.RouterRegistry) //starter:as(".")
 
-	Context   libgin.Context //starter:inject("#")
-	Name      string         //starter:inject("${web-router.default.name}")
-	GroupList string         //starter:inject("${web-router.default.groups}")
-	GinMode   string         //starter:inject("${gin.mode}")
+	AppContext application.Context //starter:inject("context")
+	Context    libgin.Context      //starter:inject("#")
+	Name       string              //starter:inject("${web-router.default.name}")
+	GroupList  string              //starter:inject("${web-router.default.groups}")
+	GinMode    string              //starter:inject("${gin.mode}")
 
 	engine *gin.Engine
 }
@@ -30,6 +32,12 @@ func (inst *DefaultRouter) _impl() (libgin.Router, libgin.RouterRegistry, applic
 
 // Life ...
 func (inst *DefaultRouter) Life() *application.Life {
+
+	action := stopper.GetAction(inst.AppContext)
+	if action == stopper.ActionStop {
+		return &application.Life{} // 如果正在执行停止动作， 则返回空的 life
+	}
+
 	return &application.Life{
 		OnCreate: inst.makeRoute,
 	}

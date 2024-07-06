@@ -11,7 +11,6 @@ import (
 
 type connector struct {
 	address  string // like 'host:port'
-	handler  http.Handler
 	starting bool
 	stopping bool
 	stopped  bool
@@ -20,6 +19,8 @@ type connector struct {
 	enabled  bool
 	keyFile  string
 	certFile string
+	handler  http.Handler
+	server   *http.Server
 }
 
 func (inst *connector) setAddress(host string, port int) error {
@@ -57,11 +58,30 @@ func (inst *connector) start() error {
 }
 
 func (inst *connector) stop() error {
+
+	server := inst.server
+
+	inst.server = nil
 	inst.stopping = true
+
+	if server == nil {
+		return nil
+	}
+
+	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+	defer cancel()
+	if err := server.Shutdown(ctx); err != nil {
+		vlog.Fatal("Server forced to shutdown: ", err)
+		return err
+	}
 	return nil
 }
 
 func (inst *connector) run() error {
+
+	defer func() {
+		inst.stopped = true
+	}()
 
 	if !inst.enabled {
 		return nil
@@ -78,16 +98,8 @@ func (inst *connector) run() error {
 		inst.serveAsHTTP(server)
 	}
 
+	inst.server = server
 	inst.started = true
-	inst.waitForStopping()
-
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
-	if err := server.Shutdown(ctx); err != nil {
-		vlog.Fatal("Server forced to shutdown: ", err)
-		return err
-	}
-
 	return nil
 }
 
@@ -113,17 +125,17 @@ func (inst *connector) serveAsHTTPS(server *http.Server) {
 	}()
 }
 
-func (inst *connector) waitForStopping() {
-	if !inst.enabled {
-		return
-	}
-	for {
-		if inst.stopping {
-			break
-		}
-		time.Sleep(time.Second * 3)
-	}
-}
+// func (inst *connector) waitForStopping() {
+// 	if !inst.enabled {
+// 		return
+// 	}
+// 	for {
+// 		if inst.stopping {
+// 			break
+// 		}
+// 		time.Sleep(time.Second * 3)
+// 	}
+// }
 
 func (inst *connector) waitForStopped(timeout time.Duration) error {
 	if !inst.enabled {

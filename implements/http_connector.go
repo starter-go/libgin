@@ -5,6 +5,7 @@ import (
 
 	"github.com/starter-go/application"
 	"github.com/starter-go/libgin"
+	"github.com/starter-go/stopper"
 )
 
 // HTTPConnector 是默认的 HTTP 连接器
@@ -13,10 +14,13 @@ type HTTPConnector struct {
 	//starter:component
 	_as func(libgin.ConnectorRegistry) //starter:as(".")
 
-	Context libgin.Context //starter:inject("#")
-	Host    string         //starter:inject("${server.http.host}")
-	Port    int            //starter:inject("${server.http.port}")
-	Enabled bool           //starter:inject("${server.http.enabled}")
+	AppContext application.Context //starter:inject("context")
+	Context    libgin.Context      //starter:inject("#")
+	Stopper    stopper.Service     //starter:inject("#")
+
+	Host    string //starter:inject("${server.http.host}")
+	Port    int    //starter:inject("${server.http.port}")
+	Enabled bool   //starter:inject("${server.http.enabled}")
 
 	connector connector
 }
@@ -36,6 +40,12 @@ func (inst *HTTPConnector) ListRegistrations() []*libgin.ConnectorRegistration {
 
 // Life ...
 func (inst *HTTPConnector) Life() *application.Life {
+
+	action := stopper.GetAction(inst.AppContext)
+	if action == stopper.ActionStop {
+		return &application.Life{} // 如果正在执行停止动作， 则返回空的 life
+	}
+
 	return &application.Life{
 		OnCreate:   inst.init,
 		OnStart:    inst.start,
@@ -69,6 +79,7 @@ func (inst *HTTPConnector) stopPost() error {
 }
 
 func (inst *HTTPConnector) loop() error {
-	inst.connector.waitForStopping()
+	// 这里不需要等待了，用 stopper 的 loop 代替
+	// inst.connector.waitForStopping()
 	return nil
 }

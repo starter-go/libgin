@@ -3,6 +3,7 @@ import (
     p0ef6f2938 "github.com/starter-go/application"
     pd1a916a20 "github.com/starter-go/libgin"
     p08eb425b0 "github.com/starter-go/libgin/implements"
+    pfee945b1a "github.com/starter-go/stopper"
      "github.com/starter-go/application"
 )
 
@@ -229,6 +230,7 @@ func (inst* p08eb425b0a_implements_DefaultRouter) inject(injext application.Inje
 	nop(ie, com)
 
 	
+    com.AppContext = inst.getAppContext(ie)
     com.Context = inst.getContext(ie)
     com.Name = inst.getName(ie)
     com.GroupList = inst.getGroupList(ie)
@@ -236,6 +238,11 @@ func (inst* p08eb425b0a_implements_DefaultRouter) inject(injext application.Inje
 
 
     return nil
+}
+
+
+func (inst*p08eb425b0a_implements_DefaultRouter) getAppContext(ie application.InjectionExt)p0ef6f2938.Context{
+    return ie.GetContext()
 }
 
 
@@ -291,7 +298,9 @@ func (inst* p08eb425b0a_implements_HTTPConnector) inject(injext application.Inje
 	nop(ie, com)
 
 	
+    com.AppContext = inst.getAppContext(ie)
     com.Context = inst.getContext(ie)
+    com.Stopper = inst.getStopper(ie)
     com.Host = inst.getHost(ie)
     com.Port = inst.getPort(ie)
     com.Enabled = inst.getEnabled(ie)
@@ -301,8 +310,18 @@ func (inst* p08eb425b0a_implements_HTTPConnector) inject(injext application.Inje
 }
 
 
+func (inst*p08eb425b0a_implements_HTTPConnector) getAppContext(ie application.InjectionExt)p0ef6f2938.Context{
+    return ie.GetContext()
+}
+
+
 func (inst*p08eb425b0a_implements_HTTPConnector) getContext(ie application.InjectionExt)pd1a916a20.Context{
     return ie.GetComponent("#alias-d1a916a203352fd5d33eabc36896b42e-Context").(pd1a916a20.Context)
+}
+
+
+func (inst*p08eb425b0a_implements_HTTPConnector) getStopper(ie application.InjectionExt)pfee945b1a.Service{
+    return ie.GetComponent("#alias-fee945b1a371c0b5131cb6da550039d6-Service").(pfee945b1a.Service)
 }
 
 
@@ -353,7 +372,9 @@ func (inst* p08eb425b0a_implements_HTTPSConnector) inject(injext application.Inj
 	nop(ie, com)
 
 	
+    com.AppContext = inst.getAppContext(ie)
     com.Context = inst.getContext(ie)
+    com.Stopper = inst.getStopper(ie)
     com.Enabled = inst.getEnabled(ie)
     com.Host = inst.getHost(ie)
     com.Port = inst.getPort(ie)
@@ -365,8 +386,18 @@ func (inst* p08eb425b0a_implements_HTTPSConnector) inject(injext application.Inj
 }
 
 
+func (inst*p08eb425b0a_implements_HTTPSConnector) getAppContext(ie application.InjectionExt)p0ef6f2938.Context{
+    return ie.GetContext()
+}
+
+
 func (inst*p08eb425b0a_implements_HTTPSConnector) getContext(ie application.InjectionExt)pd1a916a20.Context{
     return ie.GetComponent("#alias-d1a916a203352fd5d33eabc36896b42e-Context").(pd1a916a20.Context)
+}
+
+
+func (inst*p08eb425b0a_implements_HTTPSConnector) getStopper(ie application.InjectionExt)pfee945b1a.Service{
+    return ie.GetComponent("#alias-fee945b1a371c0b5131cb6da550039d6-Service").(pfee945b1a.Service)
 }
 
 
