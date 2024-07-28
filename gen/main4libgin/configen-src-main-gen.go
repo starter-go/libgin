@@ -3,6 +3,7 @@ import (
     p0ef6f2938 "github.com/starter-go/application"
     pd1a916a20 "github.com/starter-go/libgin"
     p08eb425b0 "github.com/starter-go/libgin/implements"
+    p85a4d026d "github.com/starter-go/mimetypes"
     pfee945b1a "github.com/starter-go/stopper"
      "github.com/starter-go/application"
 )
@@ -10,7 +11,7 @@ import (
 // type p08eb425b0.ContentTypeResourceLoader in package:github.com/starter-go/libgin/implements
 //
 // id:com-08eb425b0ad6e539-implements-ContentTypeResourceLoader
-// class:class-d1a916a203352fd5d33eabc36896b42e-ContentTypeRegistry
+// class:class-85a4d026daf77828ef49edb2adfd695e-Registry
 // alias:
 // scope:singleton
 //
@@ -20,7 +21,7 @@ type p08eb425b0a_implements_ContentTypeResourceLoader struct {
 func (inst* p08eb425b0a_implements_ContentTypeResourceLoader) register(cr application.ComponentRegistry) error {
 	r := cr.NewRegistration()
 	r.ID = "com-08eb425b0ad6e539-implements-ContentTypeResourceLoader"
-	r.Classes = "class-d1a916a203352fd5d33eabc36896b42e-ContentTypeRegistry"
+	r.Classes = "class-85a4d026daf77828ef49edb2adfd695e-Registry"
 	r.Aliases = ""
 	r.Scope = "singleton"
 	r.NewFunc = inst.new
@@ -88,21 +89,15 @@ func (inst* p08eb425b0a_implements_DefaultContentTypeManager) inject(injext appl
 	nop(ie, com)
 
 	
-    com.All = inst.getAll(ie)
+    com.Source = inst.getSource(ie)
 
 
     return nil
 }
 
 
-func (inst*p08eb425b0a_implements_DefaultContentTypeManager) getAll(ie application.InjectionExt)[]pd1a916a20.ContentTypeRegistry{
-    dst := make([]pd1a916a20.ContentTypeRegistry, 0)
-    src := ie.ListComponents(".class-d1a916a203352fd5d33eabc36896b42e-ContentTypeRegistry")
-    for _, item1 := range src {
-        item2 := item1.(pd1a916a20.ContentTypeRegistry)
-        dst = append(dst, item2)
-    }
-    return dst
+func (inst*p08eb425b0a_implements_DefaultContentTypeManager) getSource(ie application.InjectionExt)p85a4d026d.Manager{
+    return ie.GetComponent("#alias-85a4d026daf77828ef49edb2adfd695e-Manager").(p85a4d026d.Manager)
 }
 
 

@@ -7,18 +7,20 @@ import (
 
 	"github.com/starter-go/application"
 	"github.com/starter-go/libgin"
+	"github.com/starter-go/mimetypes"
 )
 
 // DefaultContentTypeManager ...
 type DefaultContentTypeManager struct {
 
 	//starter:component
+
 	_as func(libgin.ContentTypeManager) //starter:as("#")
 
-	All []libgin.ContentTypeRegistry //starter:inject(".")
+	Source mimetypes.Manager //starter:inject("#")
 
 	mutex sync.Mutex
-	table map[string]*libgin.ContentTypeRegistration
+	table map[string]*mimetypes.Info
 }
 
 func (inst *DefaultContentTypeManager) _impl() (libgin.ContentTypeManager, application.Lifecycle) {
@@ -53,37 +55,30 @@ func (inst *DefaultContentTypeManager) FindTypeBySuffix(suffix string) (string, 
 	inst.mutex.Lock()
 	defer inst.mutex.Unlock()
 
+	// get in cache
 	key := inst.keyForSuffix(suffix)
 	table := inst.getTable()
 	item := table[key]
-
-	if item == nil {
-		return "", fmt.Errorf("no type info for suffix:'%s'", suffix)
+	if item != nil {
+		return item.Type.String(), nil
 	}
 
-	return item.ContentType, nil
+	// load from source
+	info, err := inst.Source.FindBySuffix(suffix, nil)
+	if err == nil && info != nil {
+		table[key] = info
+		return info.Type.String(), nil
+	}
+
+	// not found
+	return "", fmt.Errorf("no type info for suffix:'%s'", suffix)
 }
 
-func (inst *DefaultContentTypeManager) getTable() map[string]*libgin.ContentTypeRegistration {
+func (inst *DefaultContentTypeManager) getTable() map[string]*mimetypes.Info {
 	t := inst.table
 	if t == nil {
-		t = inst.loadTable()
+		t = make(map[string]*mimetypes.Info)
 		inst.table = t
 	}
 	return t
-}
-
-func (inst *DefaultContentTypeManager) loadTable() map[string]*libgin.ContentTypeRegistration {
-	src := inst.All
-	dst := make(map[string]*libgin.ContentTypeRegistration)
-	for _, r1 := range src {
-		r2list := r1.ListRegistrations()
-		for _, r2 := range r2list {
-			for _, suffix := range r2.Suffixes {
-				key := inst.keyForSuffix(suffix)
-				dst[key] = r2
-			}
-		}
-	}
-	return dst
 }

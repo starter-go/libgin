@@ -6,6 +6,7 @@ import (
 	"github.com/starter-go/libgin/gen/demo4libgin"
 	"github.com/starter-go/libgin/gen/devtools4libgin"
 	"github.com/starter-go/libgin/gen/main4libgin"
+	"github.com/starter-go/mimetypes/modules/mimetypes"
 	"github.com/starter-go/starter"
 	"github.com/starter-go/stopper/modules/stopper"
 )
@@ -16,6 +17,7 @@ func Module() application.Module {
 	mb.Components(main4libgin.ExportComponents)
 	mb.Depend(starter.Module())
 	mb.Depend(stopper.Module())
+	mb.Depend(mimetypes.Module())
 	return mb.Create()
 }
 
