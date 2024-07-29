@@ -77,6 +77,7 @@ func (inst *ContentTypeResourceLoader) parseItem(k, v string) (*mimetypes.Regist
 	item.Name = tpName
 	item.Info.Type = mimetypes.Type(tpName)
 	item.Info.Label = tpName
+	item.Priority = 10
 
 	for _, name := range namelist {
 		name = strings.TrimSpace(name)

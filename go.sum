@@ -80,6 +80,8 @@ github.com/starter-go/i18n v0.0.4 h1:8gKn+pFUqYvPXZfTrtnRa1Urlc7jp8BAEB7EFs7C0ko
 github.com/starter-go/i18n v0.0.4/go.mod h1:U5nd0lWaAZ8IGzG4ZHBxV9CAlPvTt2h/eJc0NqUulZg=
 github.com/starter-go/mimetypes v0.0.1 h1:yU+Pf3vy/3zEoIPZTry/1GAJ19sEm32DGFauKpBiHkI=
 github.com/starter-go/mimetypes v0.0.1/go.mod h1:F4Ffq4kgT0yto4RMloFTK0viyUmXTnfIRPqkCO2Zdus=
+github.com/starter-go/mimetypes v0.0.2 h1:87loQH+gffKiysowo7k5oKXSUQE+VIhb2zGujv3toZc=
+github.com/starter-go/mimetypes v0.0.2/go.mod h1:F4Ffq4kgT0yto4RMloFTK0viyUmXTnfIRPqkCO2Zdus=
 github.com/starter-go/rbac v0.0.1 h1:lreMbRRyrJV2xPeotS9cetiS7vC2CttodzfLtZY1+0o=
 github.com/starter-go/rbac v0.0.1/go.mod h1:N93w2twpuiCD1yDDBeVyRm2a+Voz0OIpIpxpuox7fUY=
 github.com/starter-go/rest v0.9.0 h1:8O2ZAFZsdN1CozUTfmlF+EGDPZGmNnlHthq/b9zBc/M=

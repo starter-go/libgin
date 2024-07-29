@@ -24,7 +24,7 @@ require (
 	github.com/starter-go/base v0.9.11 // indirect
 	github.com/starter-go/configen v0.9.5 // indirect
 	github.com/starter-go/i18n v0.0.4 // indirect
-	github.com/starter-go/mimetypes v0.0.1 // indirect
+	github.com/starter-go/mimetypes v0.0.2 // indirect
 	github.com/starter-go/rbac v0.0.1 // indirect
 	github.com/starter-go/starter v1.0.10 // indirect
 	github.com/starter-go/stopper v0.0.3 // indirect
