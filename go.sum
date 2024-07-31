@@ -48,6 +48,8 @@ github.com/starter-go/afs v0.9.4 h1:0o96pOdtDvZcWSS5b7icbzYHq6hdfnHZyr+sXD6OZds=
 github.com/starter-go/afs v0.9.4/go.mod h1:Kuwz+TntvRVUYJuHWfR9hkEIcBiIC3ScW9IS/gjJulM=
 github.com/starter-go/afs v0.9.5 h1:nlXQwCzqI0fht6RrQYj+CBCH2dPX2j7HArkEf11Vhjw=
 github.com/starter-go/afs v0.9.5/go.mod h1:Kuwz+TntvRVUYJuHWfR9hkEIcBiIC3ScW9IS/gjJulM=
+github.com/starter-go/afs v0.9.8 h1:AHRB8AfER44vX/9o55fAiYnl66dvvZpAXlqDsnmVRQg=
+github.com/starter-go/afs v0.9.8/go.mod h1:6hM71KrBrzlYST/axyH4rdhZ9Ig5ri12e1TAsG7FYAA=
 github.com/starter-go/application v0.9.7 h1:jFED9q5MN+0/UKQQNyupvijmMd5LMdLtBEgzlZ6j73A=
 github.com/starter-go/application v0.9.7/go.mod h1:e5Zet+QGLL1/bxCgtPg2S/wI0vD9q71GNKju7bJOtQI=
 github.com/starter-go/application v0.9.11 h1:dPdWzxqf8tM2DitK9vmDfDWmNmZwpKr9MQsPQ4OP+Mw=
@@ -100,6 +102,8 @@ github.com/starter-go/starter v1.0.7 h1:7S9kE5Qz5NNEkcPBtCRXKP1+a/3tWpBSz8LUVKZg
 github.com/starter-go/starter v1.0.7/go.mod h1:2A0+bOFusx1p+oblSjLWkqUbx19tnCUH7hltt1pgbl8=
 github.com/starter-go/starter v1.0.10 h1:DtKuUQlnobPFk/S3Rl5kl1vdxeh3wtX2NIosxlGwUjM=
 github.com/starter-go/starter v1.0.10/go.mod h1:mfr0zOFpB4S7jVtBUbra1kdmn00L9pKGooibTBI6VP0=
+github.com/starter-go/starter v1.0.11 h1:WYUUY7C3ZTfpuNqboZxPgKEbMdKBa72sfjsD3rC+zz0=
+github.com/starter-go/starter v1.0.11/go.mod h1:zPoeovsHQ+UZ6/Xu8tToD1X/qD4r+aqutB4ceDeT5xA=
 github.com/starter-go/stopper v0.0.1 h1:1hkgOnv+XD/eQUPYAGrw/98JqqswBmIIBVf8dBH1je4=
 github.com/starter-go/stopper v0.0.1/go.mod h1:vE4lsTee1SwaB4TlYyAzjJINZ/oktREOc6Nre2fNJfk=
 github.com/starter-go/stopper v0.0.2 h1:eVb5OYV5WdyqZn1kW7kcINFdkkTiWEFhX/t0kxPEn90=
@@ -145,6 +149,8 @@ golang.org/x/sys v0.0.0-20220704084225-05e143d24a9e/go.mod h1:oPkhp1MJrh7nUepCBc
 golang.org/x/sys v0.6.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.8.0 h1:EBmGv8NaZBZTWvrbjNoL6HVt+IVy3QDQpJs7VRIw3tU=
 golang.org/x/sys v0.8.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+golang.org/x/sys v0.22.0 h1:RI27ohtqKCnwULzJLqkv897zojh5/DwS/ENaMzUOaWI=
+golang.org/x/sys v0.22.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
 golang.org/x/text v0.9.0 h1:2sjJmO8cDvYveuX97RDLsxlyUxLl+GHoLxBiRdHllBE=
 golang.org/x/text v0.9.0/go.mod h1:e1OnstbJyHTd6l/uOt8jFFHp6TRDWZR/bV3emEE/zU8=
 golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
