@@ -262,6 +262,74 @@ func (inst*p08eb425b0a_implements_DefaultRouter) getGinMode(ie application.Injec
 
 
 
+// type p08eb425b0.HTTP404Controller in package:github.com/starter-go/libgin/implements
+//
+// id:com-08eb425b0ad6e539-implements-HTTP404Controller
+// class:class-d1a916a203352fd5d33eabc36896b42e-Controller
+// alias:
+// scope:singleton
+//
+type p08eb425b0a_implements_HTTP404Controller struct {
+}
+
+func (inst* p08eb425b0a_implements_HTTP404Controller) register(cr application.ComponentRegistry) error {
+	r := cr.NewRegistration()
+	r.ID = "com-08eb425b0ad6e539-implements-HTTP404Controller"
+	r.Classes = "class-d1a916a203352fd5d33eabc36896b42e-Controller"
+	r.Aliases = ""
+	r.Scope = "singleton"
+	r.NewFunc = inst.new
+	r.InjectFunc = inst.inject
+	return r.Commit()
+}
+
+func (inst* p08eb425b0a_implements_HTTP404Controller) new() any {
+    return &p08eb425b0.HTTP404Controller{}
+}
+
+func (inst* p08eb425b0a_implements_HTTP404Controller) inject(injext application.InjectionExt, instance any) error {
+	ie := injext
+	com := instance.(*p08eb425b0.HTTP404Controller)
+	nop(ie, com)
+
+	
+    com.AppContext = inst.getAppContext(ie)
+    com.ResponseContentRes = inst.getResponseContentRes(ie)
+    com.ResponseContentType = inst.getResponseContentType(ie)
+    com.ResponseCode = inst.getResponseCode(ie)
+    com.HandlerPriority = inst.getHandlerPriority(ie)
+
+
+    return nil
+}
+
+
+func (inst*p08eb425b0a_implements_HTTP404Controller) getAppContext(ie application.InjectionExt)p0ef6f2938.Context{
+    return ie.GetContext()
+}
+
+
+func (inst*p08eb425b0a_implements_HTTP404Controller) getResponseContentRes(ie application.InjectionExt)string{
+    return ie.GetString("${libgin.http404.page.resource}")
+}
+
+
+func (inst*p08eb425b0a_implements_HTTP404Controller) getResponseContentType(ie application.InjectionExt)string{
+    return ie.GetString("${libgin.http404.page.mediatype}")
+}
+
+
+func (inst*p08eb425b0a_implements_HTTP404Controller) getResponseCode(ie application.InjectionExt)int{
+    return ie.GetInt("${libgin.http404.page.status}")
+}
+
+
+func (inst*p08eb425b0a_implements_HTTP404Controller) getHandlerPriority(ie application.InjectionExt)int{
+    return ie.GetInt("${libgin.http404.page.priority}")
+}
+
+
+
 // type p08eb425b0.HTTPConnector in package:github.com/starter-go/libgin/implements
 //
 // id:com-08eb425b0ad6e539-implements-HTTPConnector

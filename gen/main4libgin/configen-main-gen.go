@@ -34,6 +34,7 @@ func (inst*autoRegistrar) addAll() error {
     inst.register(&p08eb425b0a_implements_DefaultContentTypeManager{})
     inst.register(&p08eb425b0a_implements_DefaultContext{})
     inst.register(&p08eb425b0a_implements_DefaultRouter{})
+    inst.register(&p08eb425b0a_implements_HTTP404Controller{})
     inst.register(&p08eb425b0a_implements_HTTPConnector{})
     inst.register(&p08eb425b0a_implements_HTTPSConnector{})
     inst.register(&p08eb425b0a_implements_JSONGinResponder{})
