@@ -16,12 +16,16 @@ const (
 
 const (
 	theMainModuleResPath     = "src/main/resources"
+	theTestModuleResPath     = "src/test/resources"
 	theDemoModuleResPath     = "src/demo/resources"
 	theDevtoolsModuleResPath = "src/devtools/resources"
 )
 
 //go:embed "src/main/resources"
 var theMainModuleResFS embed.FS
+
+//go:embed "src/test/resources"
+var theTestModuleResFS embed.FS
 
 //go:embed "src/demo/resources"
 var theDemoModuleResFS embed.FS
@@ -61,5 +65,16 @@ func NewDemoModule() *application.ModuleBuilder {
 	mb.Version(theModuleVersion)
 	mb.Revision(theModuleRevision)
 	mb.EmbedResources(theDemoModuleResFS, theDemoModuleResPath)
+	return mb
+}
+
+// NewTestModule 创建模块 [github.com/starter-go/libgin#demo]
+func NewTestModule() *application.ModuleBuilder {
+
+	mb := &application.ModuleBuilder{}
+	mb.Name(theModuleName + "#test")
+	mb.Version(theModuleVersion)
+	mb.Revision(theModuleRevision)
+	mb.EmbedResources(theTestModuleResFS, theTestModuleResPath)
 	return mb
 }

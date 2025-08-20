@@ -8,8 +8,9 @@ import (
 )
 
 func main() {
-	m := libgin.ModuleForDemo()
-	i := starter.Init(os.Args)
+	a := os.Args
+	m := libgin.Module()
+	i := starter.Init(a)
 	i.MainModule(m)
 	i.WithPanic(true).Run()
 }

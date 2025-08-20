@@ -9,6 +9,6 @@ import (
 
 func main() {
 	i := starter.Init(os.Args)
-	i.MainModule(libgin.ModuleDevtools())
+	i.MainModule(libgin.ModuleForDevtools())
 	i.WithPanic(true).Run()
 }

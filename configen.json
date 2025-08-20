@@ -8,6 +8,11 @@
                 "r": true
             },
             {
+                "id": "test",
+                "path": "src/test/golang",
+                "r": true
+            },
+            {
                 "id": "devtools",
                 "path": "devtools",
                 "r": true
@@ -24,6 +29,13 @@
                 "path": "gen/main4libgin",
                 "sources": [
                     "main"
+                ]
+            },
+            {
+                "id": "test",
+                "path": "gen/test4libgin",
+                "sources": [
+                    "test"
                 ]
             },
             {

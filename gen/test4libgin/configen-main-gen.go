@@ -1,4 +1,4 @@
-package devtools4libgin
+package test4libgin
 
 import "github.com/starter-go/application"
 
@@ -30,12 +30,7 @@ func (inst *autoRegistrar) register(factory comFactory) error {
 func (inst*autoRegistrar) addAll() error {
 
     
-    inst.register(&p0f3e25981e_groups_DevtoolsGroup{})
-    inst.register(&p9e4b55c707_controllers_ArgumentController{})
-    inst.register(&p9e4b55c707_controllers_ComponentController{})
-    inst.register(&p9e4b55c707_controllers_EnvironmentController{})
-    inst.register(&p9e4b55c707_controllers_ExampleController{})
-    inst.register(&p9e4b55c707_controllers_PropertyController{})
+    inst.register(&p0a849518c8_units4libgin_Unit1{})
 
 
     return nil
