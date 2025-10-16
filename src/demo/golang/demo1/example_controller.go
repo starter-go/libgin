@@ -66,29 +66,25 @@ func (inst *ExampleController) handleMid(c *gin.Context) {
 }
 
 func (inst *ExampleController) handleGetOne(c *gin.Context) {
+
 	req := &myExampleRequest{
 		context:       c,
 		controller:    inst,
 		wantRequestID: true,
 	}
-	err := req.open()
-	if err == nil {
-		err = req.todo()
-	}
-	req.send(err)
+
+	req.execute(req.todo)
 }
 
 func (inst *ExampleController) handleGetList(c *gin.Context) {
+
 	req := &myExampleRequest{
 		context:       c,
 		controller:    inst,
 		wantRequestID: false,
 	}
-	err := req.open()
-	if err == nil {
-		err = req.todo()
-	}
-	req.send(err)
+
+	req.execute(req.todo)
 }
 
 func (inst *ExampleController) handlePost(c *gin.Context) {
@@ -128,9 +124,23 @@ type myExampleRequest struct {
 	body2 ExampleVO
 }
 
-func (inst *myExampleRequest) open() error {
+func (inst *myExampleRequest) execute(task func() error) {
 
-	c := inst.context
+	ex := new(libgin.Executor)
+	ex.Context = inst.context
+	ex.Responder = inst.controller.Responder
+	ex.Body1 = &inst.body1
+	ex.Body2 = &inst.body2
+
+	ex.OnTask = task
+	ex.OnOpen = inst.onOpen
+
+	ex.Execute()
+}
+
+func (inst *myExampleRequest) onOpen(c *gin.Context) error {
+
+	// c := inst.context
 
 	if inst.wantRequestID {
 		idstr := c.Param("id")
@@ -151,25 +161,18 @@ func (inst *myExampleRequest) open() error {
 	return nil
 }
 
-func (inst *myExampleRequest) send(err error) {
-	ctx := inst.context
-	status := inst.body2.Status
-	data := &inst.body2
-	resp := &libgin.Response{
-		Context: ctx,
-		Data:    data,
-		Error:   err,
-		Status:  status,
-	}
-	inst.controller.Responder.Send(resp)
-}
-
 func (inst *myExampleRequest) todo() error {
 	id := inst.id
-	if id > 1000 {
+
+	if id < 100 {
+		inst.body2.Status = 0
+	} else if id < 1000 {
+		inst.body2.Status = int(id)
+	} else if id < 10000 {
 		return fmt.Errorf("err.id=%v", id)
-	} else if id > 100 {
+	} else {
 		return web.NewError(http.StatusForbidden, "err.id=%v", id)
 	}
+
 	return nil
 }
