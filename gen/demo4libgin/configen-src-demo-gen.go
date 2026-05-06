@@ -5,6 +5,50 @@ import (
      "github.com/starter-go/application"
 )
 
+// type p4e2855b32.ContextBindingDemo in package:github.com/starter-go/libgin/src/demo/golang/demo1
+//
+// id:com-4e2855b323169093-demo1-ContextBindingDemo
+// class:class-d1a916a203352fd5d33eabc36896b42e-Controller
+// alias:
+// scope:singleton
+//
+type p4e2855b323_demo1_ContextBindingDemo struct {
+}
+
+func (inst* p4e2855b323_demo1_ContextBindingDemo) register(cr application.ComponentRegistry) error {
+	r := cr.NewRegistration()
+	r.ID = "com-4e2855b323169093-demo1-ContextBindingDemo"
+	r.Classes = "class-d1a916a203352fd5d33eabc36896b42e-Controller"
+	r.Aliases = ""
+	r.Scope = "singleton"
+	r.NewFunc = inst.new
+	r.InjectFunc = inst.inject
+	return r.Commit()
+}
+
+func (inst* p4e2855b323_demo1_ContextBindingDemo) new() any {
+    return &p4e2855b32.ContextBindingDemo{}
+}
+
+func (inst* p4e2855b323_demo1_ContextBindingDemo) inject(injext application.InjectionExt, instance any) error {
+	ie := injext
+	com := instance.(*p4e2855b32.ContextBindingDemo)
+	nop(ie, com)
+
+	
+    com.Responder = inst.getResponder(ie)
+
+
+    return nil
+}
+
+
+func (inst*p4e2855b323_demo1_ContextBindingDemo) getResponder(ie application.InjectionExt)pd1a916a20.Responder{
+    return ie.GetComponent("#alias-d1a916a203352fd5d33eabc36896b42e-Responder").(pd1a916a20.Responder)
+}
+
+
+
 // type p4e2855b32.ExampleController in package:github.com/starter-go/libgin/src/demo/golang/demo1
 //
 // id:com-4e2855b323169093-demo1-ExampleController

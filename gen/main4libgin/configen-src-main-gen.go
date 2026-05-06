@@ -262,6 +262,62 @@ func (inst*p08eb425b0a_implements_DefaultRouter) getGinMode(ie application.Injec
 
 
 
+// type p08eb425b0.GinContextBinderMiddleware in package:github.com/starter-go/libgin/implements
+//
+// id:com-08eb425b0ad6e539-implements-GinContextBinderMiddleware
+// class:class-d1a916a203352fd5d33eabc36896b42e-Controller
+// alias:
+// scope:singleton
+//
+type p08eb425b0a_implements_GinContextBinderMiddleware struct {
+}
+
+func (inst* p08eb425b0a_implements_GinContextBinderMiddleware) register(cr application.ComponentRegistry) error {
+	r := cr.NewRegistration()
+	r.ID = "com-08eb425b0ad6e539-implements-GinContextBinderMiddleware"
+	r.Classes = "class-d1a916a203352fd5d33eabc36896b42e-Controller"
+	r.Aliases = ""
+	r.Scope = "singleton"
+	r.NewFunc = inst.new
+	r.InjectFunc = inst.inject
+	return r.Commit()
+}
+
+func (inst* p08eb425b0a_implements_GinContextBinderMiddleware) new() any {
+    return &p08eb425b0.GinContextBinderMiddleware{}
+}
+
+func (inst* p08eb425b0a_implements_GinContextBinderMiddleware) inject(injext application.InjectionExt, instance any) error {
+	ie := injext
+	com := instance.(*p08eb425b0.GinContextBinderMiddleware)
+	nop(ie, com)
+
+	
+    com.Enabled = inst.getEnabled(ie)
+    com.Priority = inst.getPriority(ie)
+    com.Path = inst.getPath(ie)
+
+
+    return nil
+}
+
+
+func (inst*p08eb425b0a_implements_GinContextBinderMiddleware) getEnabled(ie application.InjectionExt)bool{
+    return ie.GetBool("${web-middleware.context-binding.enabled}")
+}
+
+
+func (inst*p08eb425b0a_implements_GinContextBinderMiddleware) getPriority(ie application.InjectionExt)int{
+    return ie.GetInt("${web-middleware.context-binding.priority}")
+}
+
+
+func (inst*p08eb425b0a_implements_GinContextBinderMiddleware) getPath(ie application.InjectionExt)string{
+    return ie.GetString("${web-middleware.context-binding.path}")
+}
+
+
+
 // type p08eb425b0.HTTP404Controller in package:github.com/starter-go/libgin/implements
 //
 // id:com-08eb425b0ad6e539-implements-HTTP404Controller

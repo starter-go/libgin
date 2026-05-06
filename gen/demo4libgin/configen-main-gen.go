@@ -30,6 +30,7 @@ func (inst *autoRegistrar) register(factory comFactory) error {
 func (inst*autoRegistrar) addAll() error {
 
     
+    inst.register(&p4e2855b323_demo1_ContextBindingDemo{})
     inst.register(&p4e2855b323_demo1_ExampleController{})
 
 
