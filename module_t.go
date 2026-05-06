@@ -8,8 +8,8 @@ import (
 
 const (
 	theModuleName     = "github.com/starter-go/libgin"
-	theModuleVersion  = "v1.0.19"
-	theModuleRevision = 20
+	theModuleVersion  = "v1.0.20"
+	theModuleRevision = 21
 )
 
 ////////////////////////////////////////////////////////////////////////////////
