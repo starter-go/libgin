@@ -21,7 +21,7 @@ require (
 	github.com/pelletier/go-toml/v2 v2.0.8 // indirect
 	github.com/starter-go/afs v0.9.13 // indirect
 	github.com/starter-go/application v0.9.27 // indirect
-	github.com/starter-go/base v0.9.13 // indirect
+	github.com/starter-go/base v0.9.16 // indirect
 	github.com/starter-go/configen v0.9.5 // indirect
 	github.com/starter-go/i18n v0.0.4 // indirect
 	github.com/starter-go/libafs v0.0.7 // indirect
