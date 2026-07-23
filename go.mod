@@ -4,25 +4,25 @@ go 1.23
 
 require (
 	github.com/starter-go/afs v0.10.0 // indirect
+	github.com/starter-go/application v0.10.0
+	github.com/starter-go/base v0.10.0
 	github.com/starter-go/configen v0.10.0 // indirect
 	github.com/starter-go/i18n v0.10.0 // indirect
 	github.com/starter-go/libafs v0.10.0 // indirect
-	github.com/starter-go/units v0.10.0 // indirect
-	github.com/starter-go/application v0.10.0
-	github.com/starter-go/base v0.10.0
 	github.com/starter-go/mimetypes v0.10.0
 	github.com/starter-go/rbac v0.10.0
 	github.com/starter-go/starter v0.10.0
-	github.com/starter-go/stopper v0.10.0
+	github.com/starter-go/stopper v0.10.1
+	github.com/starter-go/units v0.10.0 // indirect
 	github.com/starter-go/vlog v0.10.0
 )
 
 require (
-	github.com/gin-gonic/gin v1.9.1
 	github.com/bytedance/sonic v1.9.1 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.2 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
+	github.com/gin-gonic/gin v1.9.1
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.14.0 // indirect
@@ -44,3 +44,5 @@ require (
 	google.golang.org/protobuf v1.30.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
+require github.com/starter-go/v0/libvlog v0.10.1 // indirect

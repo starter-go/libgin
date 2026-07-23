@@ -65,8 +65,12 @@ github.com/starter-go/starter v0.10.0 h1:l440OaoSwB5HfamYwicqPrKRqZ8phciKNMhKTOk
 github.com/starter-go/starter v0.10.0/go.mod h1:uXddAQzKbR0LWn+jGJcY7bfPCXdcceTektezYjuAHPk=
 github.com/starter-go/stopper v0.10.0 h1:eY8IQb1tlirbBDeOCF2kmlSeaYzb/VWlEoDXkmfSKw0=
 github.com/starter-go/stopper v0.10.0/go.mod h1:KAjYUtkV1TvlN1XvZ2cUij3fGKthENNCI676Dkvz7IM=
+github.com/starter-go/stopper v0.10.1 h1:J+g3BB+JqrsfHxp/A37YuQ1tDSYSxE9wuwAhvKr6HKM=
+github.com/starter-go/stopper v0.10.1/go.mod h1:rjZHY3+osm8+BNKpiYaBFTsxLc1OCFKtmUlcmzVkspE=
 github.com/starter-go/units v0.10.0 h1:j0vzqEkxWCFCDcbv/D23lQmMkZdbPyrxc6hHIXDkK9c=
 github.com/starter-go/units v0.10.0/go.mod h1:wEiJ8qJFhX1cU0Dw5n05iMJV0SRk9oEzJcngUTVMr04=
+github.com/starter-go/v0/libvlog v0.10.1 h1:5EZwisfutcqmsS5+L45ClSNBk3g5AW6c3KTcVFheGpw=
+github.com/starter-go/v0/libvlog v0.10.1/go.mod h1:jsOQ0/WLt7lw79yfXCofvsFBe6+2E5hJpoT4RAjYtOM=
 github.com/starter-go/vlog v0.10.0 h1:K9jkGPFqCTfMZYF69rcgcPDjYckEHOJHT6Jw2h3zQJU=
 github.com/starter-go/vlog v0.10.0/go.mod h1:Nn0xWwukI8AezNUlZdecVbkmEEz18X4Z6v8BzhJeSa0=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=

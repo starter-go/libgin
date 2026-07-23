@@ -10,6 +10,7 @@ import (
 	"github.com/starter-go/mimetypes/modules/mimetypes"
 	"github.com/starter-go/starter"
 	"github.com/starter-go/stopper/modules/stopper"
+	"github.com/starter-go/v0/libvlog"
 )
 
 // Module ...
@@ -18,6 +19,7 @@ func Module() application.Module {
 	mb.Components(main4libgin.ExportComponents)
 	mb.Depend(starter.Module())
 	mb.Depend(stopper.Module())
+	mb.Depend(libvlog.Module())
 	mb.Depend(mimetypes.Module())
 	return mb.Create()
 }
