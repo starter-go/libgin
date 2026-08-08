@@ -59,9 +59,9 @@ func (inst *JSONGinResponder) Send(resp *libgin.Response) {
 		}
 	}
 
-	vg, ok := data.(rbac.VOGetter)
+	ref, ok := data.(rbac.VORef)
 	if ok {
-		v := vg.GetVO()
+		v := ref.GetTarget()
 		if err != nil {
 			v.Error = err.Error()
 		}

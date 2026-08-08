@@ -199,9 +199,9 @@ func (inst *Executor) DefaultOnSend(err error) {
 }
 
 func (inst *Executor) innerComputeStatusCode(code int, body2 any) int {
-	vog, ok := body2.(rbac.VOGetter)
+	ref, ok := body2.(rbac.VORef)
 	if ok {
-		b2vo := vog.GetVO()
+		b2vo := ref.GetTarget()
 		c1 := code
 		c2 := b2vo.Status
 		if c1 < c2 {

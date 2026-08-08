@@ -5,12 +5,12 @@ go 1.23
 require (
 	github.com/starter-go/afs v0.10.0 // indirect
 	github.com/starter-go/application v0.10.0
-	github.com/starter-go/base v0.10.0
+	github.com/starter-go/base v0.10.3
 	github.com/starter-go/configen v0.10.0 // indirect
 	github.com/starter-go/i18n v0.10.0 // indirect
 	github.com/starter-go/libafs v0.10.0 // indirect
 	github.com/starter-go/mimetypes v0.10.0
-	github.com/starter-go/rbac v0.10.0
+	github.com/starter-go/rbac v0.10.11
 	github.com/starter-go/starter v0.10.0
 	github.com/starter-go/stopper v0.10.1
 	github.com/starter-go/units v0.10.0 // indirect
@@ -45,4 +45,9 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-require github.com/starter-go/v0/libvlog v0.10.1 // indirect
+require (
+	github.com/jinzhu/inflection v1.0.0 // indirect
+	github.com/jinzhu/now v1.1.5 // indirect
+	github.com/starter-go/v0/libvlog v0.10.1 // indirect
+	gorm.io/gorm v1.30.1 // indirect
+)
