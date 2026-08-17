@@ -64,7 +64,7 @@ func (inst *DefaultContentTypeManager) FindTypeBySuffix(suffix string) (string, 
 	}
 
 	// load from source
-	info, err := inst.Source.FindBySuffix(suffix, nil)
+	info, err := inst.Source.FindBySuffix(mimetypes.Suffix(suffix), nil)
 	if err == nil && info != nil {
 		table[key] = info
 		return info.Type.String(), nil

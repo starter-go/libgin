@@ -65,6 +65,8 @@ github.com/starter-go/libafs v0.10.0 h1:2iTbFoM2OJmRj+tfn1coqWBLh93KZZTquuzXxOac
 github.com/starter-go/libafs v0.10.0/go.mod h1:6RQim5hKgyafXmvovscs4w0Gnr/5mAxTQt5Un9I3S74=
 github.com/starter-go/mimetypes v0.10.0 h1:YAuWM1yGJUqZEAMclHENMzmV8O/qU77JaR4x0wEawwU=
 github.com/starter-go/mimetypes v0.10.0/go.mod h1:361DXRB+F2toHuh6UfX/bkKKIqxIR+zIy65SDdebw5E=
+github.com/starter-go/mimetypes v0.10.2 h1:xCQF5nKtbLEgjhbdD9baz2qQh1606hb6EMEQGFSIBcw=
+github.com/starter-go/mimetypes v0.10.2/go.mod h1:361DXRB+F2toHuh6UfX/bkKKIqxIR+zIy65SDdebw5E=
 github.com/starter-go/rbac v0.10.0 h1:xJCpRTWrwv2mdi9db3TUdoFLHCvu/ja2Sl6SZKaqec0=
 github.com/starter-go/rbac v0.10.0/go.mod h1:PY5+MSC7PViiZeOC5j3uo6NCkYdSsWbqpx3Ha3vtr84=
 github.com/starter-go/rbac v0.10.11 h1:AevGKwMtF5Q7xyWIuk7ydRM5A6z5LEdW+AzACQqU618=

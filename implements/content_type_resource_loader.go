@@ -85,7 +85,7 @@ func (inst *ContentTypeResourceLoader) parseItem(k, v string) (*mimetypes.Regist
 		if !strings.HasPrefix(name, dot) {
 			name = dot + name
 		}
-		item.Suffixes = append(item.Suffixes, name)
+		item.Suffixes = append(item.Suffixes, mimetypes.Suffix(name))
 	}
 
 	return item, nil

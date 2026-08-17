@@ -13,8 +13,11 @@ import (
 	"github.com/starter-go/v0/libvlog"
 )
 
-// Module ...
 func Module() application.Module {
+	return ModuleForMain()
+}
+
+func ModuleForMain() application.Module {
 	mb := libgin.NewMainModule()
 	mb.Components(main4libgin.ExportComponents)
 	mb.Depend(starter.Module())
@@ -40,6 +43,7 @@ func ModuleForDemo() application.Module {
 	mb.Components(demo4libgin.ExportComponents)
 
 	mb.Depend(ModuleForDevtools())
+	mb.Depend(mimetypes.ModuleForCommon())
 
 	return mb.Create()
 }
@@ -50,6 +54,7 @@ func ModuleForTest() application.Module {
 	mb.Components(test4libgin.ExportComponents)
 
 	mb.Depend(ModuleForDevtools())
+	mb.Depend(mimetypes.ModuleForCommon())
 
 	return mb.Create()
 }
