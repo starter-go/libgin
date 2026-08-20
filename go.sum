@@ -57,6 +57,8 @@ github.com/starter-go/base v0.10.0 h1:f2wuxeZXv+Gdfo2JzbbpuEfD0YKlJABvS1AnYyWikO
 github.com/starter-go/base v0.10.0/go.mod h1:MMqPMFzwPHjKyfX0cMmkpAAbeJ0tJupFbI8D+x27fJM=
 github.com/starter-go/base v0.10.3 h1:ZZly3LaStxPbAxwC9lXcSzVj51zTOSLEmH/MaS8/ET0=
 github.com/starter-go/base v0.10.3/go.mod h1:MMqPMFzwPHjKyfX0cMmkpAAbeJ0tJupFbI8D+x27fJM=
+github.com/starter-go/base v0.10.4 h1:KvFOQkO3Imjb7rMGkIwEnA/ELq3+h9/PzqiaMu3LJTc=
+github.com/starter-go/base v0.10.4/go.mod h1:MMqPMFzwPHjKyfX0cMmkpAAbeJ0tJupFbI8D+x27fJM=
 github.com/starter-go/configen v0.10.0 h1:7/D7TkrH2mFWDGhyLkFSvgzG/o7lXPNL7UCukJgpXLA=
 github.com/starter-go/configen v0.10.0/go.mod h1:cBiN6PJIVLe2Z/UNpI0++autmEB/SkOoUmph8VZiiBA=
 github.com/starter-go/i18n v0.10.0 h1:BOG/QLt2pfY1N7GYUagmqMJoxHI0yROLLpGx0OdxjOk=
@@ -67,6 +69,8 @@ github.com/starter-go/mimetypes v0.10.0 h1:YAuWM1yGJUqZEAMclHENMzmV8O/qU77JaR4x0
 github.com/starter-go/mimetypes v0.10.0/go.mod h1:361DXRB+F2toHuh6UfX/bkKKIqxIR+zIy65SDdebw5E=
 github.com/starter-go/mimetypes v0.10.2 h1:xCQF5nKtbLEgjhbdD9baz2qQh1606hb6EMEQGFSIBcw=
 github.com/starter-go/mimetypes v0.10.2/go.mod h1:361DXRB+F2toHuh6UfX/bkKKIqxIR+zIy65SDdebw5E=
+github.com/starter-go/mimetypes v0.10.3 h1:FI1fRhaZNEgqpKQ99XvrnmD+SNG9gGF1Q1Si60eF0Fs=
+github.com/starter-go/mimetypes v0.10.3/go.mod h1:C6QIdyNXy6tp21lkXyhzI9LY5TL8P5/zZqZhuzx7I5s=
 github.com/starter-go/rbac v0.10.0 h1:xJCpRTWrwv2mdi9db3TUdoFLHCvu/ja2Sl6SZKaqec0=
 github.com/starter-go/rbac v0.10.0/go.mod h1:PY5+MSC7PViiZeOC5j3uo6NCkYdSsWbqpx3Ha3vtr84=
 github.com/starter-go/rbac v0.10.11 h1:AevGKwMtF5Q7xyWIuk7ydRM5A6z5LEdW+AzACQqU618=

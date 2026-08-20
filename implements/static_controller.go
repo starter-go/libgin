@@ -1,6 +1,7 @@
 package implements
 
 import (
+	"context"
 	"net/http"
 	"strings"
 
@@ -8,6 +9,7 @@ import (
 	"github.com/starter-go/application"
 	"github.com/starter-go/application/resources"
 	"github.com/starter-go/libgin"
+	"github.com/starter-go/mimetypes"
 	"github.com/starter-go/vlog"
 )
 
@@ -17,10 +19,10 @@ type StaticController struct {
 	//starter:component
 	_as func(libgin.Controller) //starter:as(".")
 
-	Context    application.Context       //starter:inject("context")
-	ResPath    string                    //starter:inject("${web-group.static.resources}")
-	IndexNames string                    //starter:inject("${web-group.static.index-names}")
-	Types      libgin.ContentTypeManager //starter:inject("#")
+	Context    application.Context //starter:inject("context")
+	ResPath    string              //starter:inject("${web-group.static.resources}")
+	IndexNames string              //starter:inject("${web-group.static.index-names}")
+	Types      mimetypes.Service   //starter:inject("#")
 
 	indexNameList []string // cached for IndexNames
 }
@@ -134,10 +136,19 @@ func (inst *StaticController) isIndexName(name string) bool {
 }
 
 func (inst *StaticController) findType(suffix string) string {
-	t, err := inst.Types.FindTypeBySuffix(suffix)
-	if err == nil {
-		return t
+
+	ctx := context.Background()
+	ser := inst.Types
+	man := ser.GetManager()
+	want := new(mimetypes.Info)
+
+	want.Suffix = mimetypes.Suffix(suffix)
+
+	have, err := man.FindBySuffix(ctx, want)
+	if err == nil && have != nil {
+		return have.Type.String()
 	}
+
 	return "application/octet-stream"
 }
 

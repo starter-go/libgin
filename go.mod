@@ -5,11 +5,11 @@ go 1.23
 require (
 	github.com/starter-go/afs v0.10.0 // indirect
 	github.com/starter-go/application v0.10.0
-	github.com/starter-go/base v0.10.3
+	github.com/starter-go/base v0.10.4
 	github.com/starter-go/configen v0.10.0 // indirect
 	github.com/starter-go/i18n v0.10.0 // indirect
 	github.com/starter-go/libafs v0.10.0 // indirect
-	github.com/starter-go/mimetypes v0.10.2
+	github.com/starter-go/mimetypes v0.10.3
 	github.com/starter-go/rbac v0.10.11
 	github.com/starter-go/starter v0.10.0
 	github.com/starter-go/stopper v0.10.1

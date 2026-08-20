@@ -21,6 +21,6 @@ package libgin
 // }
 
 // ContentTypeManager 是文档类型管理器
-type ContentTypeManager interface {
-	FindTypeBySuffix(suffix string) (string, error)
-}
+// type ContentTypeManager interface {
+// 	FindTypeBySuffix(suffix string) (string, error)
+// }

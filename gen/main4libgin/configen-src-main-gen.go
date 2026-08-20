@@ -58,50 +58,6 @@ func (inst*p08eb425b0a_implements_ContentTypeResourceLoader) getTypesProps(ie ap
 
 
 
-// type p08eb425b0.DefaultContentTypeManager in package:github.com/starter-go/libgin/implements
-//
-// id:com-08eb425b0ad6e539-implements-DefaultContentTypeManager
-// class:
-// alias:alias-d1a916a203352fd5d33eabc36896b42e-ContentTypeManager
-// scope:singleton
-//
-type p08eb425b0a_implements_DefaultContentTypeManager struct {
-}
-
-func (inst* p08eb425b0a_implements_DefaultContentTypeManager) register(cr application.ComponentRegistry) error {
-	r := cr.NewRegistration()
-	r.ID = "com-08eb425b0ad6e539-implements-DefaultContentTypeManager"
-	r.Classes = ""
-	r.Aliases = "alias-d1a916a203352fd5d33eabc36896b42e-ContentTypeManager"
-	r.Scope = "singleton"
-	r.NewFunc = inst.new
-	r.InjectFunc = inst.inject
-	return r.Commit()
-}
-
-func (inst* p08eb425b0a_implements_DefaultContentTypeManager) new() any {
-    return &p08eb425b0.DefaultContentTypeManager{}
-}
-
-func (inst* p08eb425b0a_implements_DefaultContentTypeManager) inject(injext application.InjectionExt, instance any) error {
-	ie := injext
-	com := instance.(*p08eb425b0.DefaultContentTypeManager)
-	nop(ie, com)
-
-	
-    com.Source = inst.getSource(ie)
-
-
-    return nil
-}
-
-
-func (inst*p08eb425b0a_implements_DefaultContentTypeManager) getSource(ie application.InjectionExt)p85a4d026d.Manager{
-    return ie.GetComponent("#alias-85a4d026daf77828ef49edb2adfd695e-Manager").(p85a4d026d.Manager)
-}
-
-
-
 // type p08eb425b0.DefaultContext in package:github.com/starter-go/libgin/implements
 //
 // id:com-08eb425b0ad6e539-implements-DefaultContext
@@ -746,8 +702,8 @@ func (inst*p08eb425b0a_implements_StaticController) getIndexNames(ie application
 }
 
 
-func (inst*p08eb425b0a_implements_StaticController) getTypes(ie application.InjectionExt)pd1a916a20.ContentTypeManager{
-    return ie.GetComponent("#alias-d1a916a203352fd5d33eabc36896b42e-ContentTypeManager").(pd1a916a20.ContentTypeManager)
+func (inst*p08eb425b0a_implements_StaticController) getTypes(ie application.InjectionExt)p85a4d026d.Service{
+    return ie.GetComponent("#alias-85a4d026daf77828ef49edb2adfd695e-Service").(p85a4d026d.Service)
 }
 
 

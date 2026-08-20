@@ -68,25 +68,33 @@ func (inst *ContentTypeResourceLoader) load() []*mimetypes.Registration {
 
 func (inst *ContentTypeResourceLoader) parseItem(k, v string) (*mimetypes.Registration, error) {
 
-	const dot = "."
-	item := &mimetypes.Registration{}
-	namelist := strings.Split(v, ",")
+	const (
+		dot   = "."
+		empty = ""
+	)
 
-	// item.ContentType = strings.TrimSpace(k)
-	tpName := strings.TrimSpace(k)
-	item.Name = tpName
-	item.Info.Type = mimetypes.Type(tpName)
-	item.Info.Label = tpName
-	item.Priority = 10
+	suffixlist := strings.Split(v, ",")
+	builder := new(mimetypes.RegistrationBuilder)
+	tpName := mimetypes.Type(k).Pure()
+	name := tpName.String()
 
-	for _, name := range namelist {
-		name = strings.TrimSpace(name)
-		name = strings.ToLower(name)
-		if !strings.HasPrefix(name, dot) {
-			name = dot + name
+	builder.SetType(tpName)
+	builder.SetLabel(name)
+	builder.SetDescription(name)
+	builder.SetName(name)
+
+	for _, suffix := range suffixlist {
+		suffix = strings.TrimSpace(suffix)
+		suffix = strings.ToLower(suffix)
+		if suffix == empty {
+			continue
 		}
-		item.Suffixes = append(item.Suffixes, mimetypes.Suffix(name))
+		if !strings.HasPrefix(suffix, dot) {
+			suffix = dot + suffix
+		}
+		builder.AddSuffixes(mimetypes.Suffix(suffix))
 	}
 
+	item := builder.Build()
 	return item, nil
 }
